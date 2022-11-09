@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
+    static let id = "SearchCollectionViewCell"
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "title"
