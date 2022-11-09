@@ -8,12 +8,13 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        return tableView
+        return collectionView
     }()
     
     override func viewDidLoad() {
@@ -21,18 +22,18 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //TODO: [ItBook]의 count를 return하도록 구현
         0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //TODO: Custom UITableViewCell 구현
-        UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //TODO: Custom UICollectionViewCell 구현
+        UICollectionViewCell()
     }
 }
