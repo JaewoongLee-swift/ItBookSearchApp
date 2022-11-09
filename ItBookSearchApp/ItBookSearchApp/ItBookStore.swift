@@ -57,8 +57,8 @@ struct ItBook: Decodable {
     }
 }
 
-struct ItBookDetail {
-    let error: Int
+struct ItBookDetail: Decodable {
+    let error: String
     let title: String
     let subtitle: String
     let authors: String
@@ -74,9 +74,53 @@ struct ItBookDetail {
     let imageURL: String
     let url: String
     let pdf: ItBookPDF?
+    
+    enum CodingKeys: String, CodingKey {
+        case error
+        case title
+        case subtitle
+        case authors
+        case publisher
+        case language
+        case isbn10
+        case isbn13
+        case pages
+        case year
+        case rating
+        case desc
+        case price
+        case imageURL = "image"
+        case url
+        case pdf
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.error = (try? container.decode(String.self, forKey: .error)) ?? "0"
+        self.title = (try? container.decode(String.self, forKey: .title)) ?? "제목오류"
+        self.subtitle = (try? container.decode(String.self, forKey: .subtitle)) ?? "부제오류"
+        self.authors = (try? container.decode(String.self, forKey: .authors)) ?? "저자오류"
+        self.publisher = (try? container.decode(String.self, forKey: .publisher)) ?? "출판사오류"
+        self.language = (try? container.decode(String.self, forKey: .language)) ?? "언어오류"
+        self.isbn10 = (try? container.decode(String.self, forKey: .isbn10)) ?? "0"
+        self.isbn13 = (try? container.decode(String.self, forKey: .isbn13)) ?? "0"
+        self.pages = (try? container.decode(String.self, forKey: .pages)) ?? "0"
+        self.year = (try? container.decode(String.self, forKey: .year)) ?? "0"
+        self.rating = (try? container.decode(String.self, forKey: .rating)) ?? "0"
+        self.desc = (try? container.decode(String.self, forKey: .desc)) ?? "설명오류"
+        self.price = (try? container.decode(String.self, forKey: .price)) ?? "$0"
+        self.imageURL = (try? container.decode(String.self, forKey: .imageURL)) ?? "https://itbook.store/img/books/9781449344689.png"
+        self.url = (try? container.decode(String.self, forKey: .url)) ?? "https://itbook.store/books/9781449344689"
+        self.pdf = try container.decodeIfPresent(ItBookPDF.self, forKey: .pdf)
+    }
 }
 
-struct ItBookPDF {
+struct ItBookPDF: Decodable {
     let chapter2: String
     let chapter5: String
+    
+    enum CodingKeys: String, CodingKey {
+        case chapter2 = "Chapter 2"
+        case chapter5 = "Chapter 5"
+    }
 }
