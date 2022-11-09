@@ -12,6 +12,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "title"
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -20,6 +21,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Subtitle"
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -28,6 +30,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "isbn13"
         label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -36,6 +39,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "$price"
         label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -44,6 +48,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "https://url"
         label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -51,6 +56,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
