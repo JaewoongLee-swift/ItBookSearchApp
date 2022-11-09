@@ -15,6 +15,7 @@
 		55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FA4291972B000414462 /* ItBookSearchAppTests.swift */; };
 		55745FAF291972B000414462 /* ItBookSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */; };
 		55745FB1291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */; };
+		55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FBD29197D9E00414462 /* ItBookStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		55745FAA291972B000414462 /* ItBookSearchAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItBookSearchAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITests.swift; sourceTree = "<group>"; };
 		55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		55745FBD29197D9E00414462 /* ItBookStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				55745F8D291972AF00414462 /* AppDelegate.swift */,
 				55745F8F291972AF00414462 /* SceneDelegate.swift */,
 				55745F91291972AF00414462 /* ViewController.swift */,
+				55745FBD29197D9E00414462 /* ItBookStore.swift */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
 				55745F9B291972B000414462 /* Info.plist */,
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55745F92291972AF00414462 /* ViewController.swift in Sources */,
+				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
 				55745F90291972AF00414462 /* SceneDelegate.swift in Sources */,
 			);
