@@ -57,7 +57,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
 }
 
 extension SearchCollectionViewCell {
-    func addSubViews() {
+    func setupLayout() {
         [
             titleLabel,
             subtitleLabel,
