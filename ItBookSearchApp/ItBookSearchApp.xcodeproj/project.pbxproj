@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
-		55745F92291972AF00414462 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F91291972AF00414462 /* ViewController.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
 		55745F9A291972B000414462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55745F98291972B000414462 /* LaunchScreen.storyboard */; };
 		55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FA4291972B000414462 /* ItBookSearchAppTests.swift */; };
 		55745FAF291972B000414462 /* ItBookSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */; };
 		55745FB1291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */; };
 		55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FBD29197D9E00414462 /* ItBookStore.swift */; };
+		55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC7291BFA9F00414462 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		55745F91291972AF00414462 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55745F96291972B000414462 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55745F99291972B000414462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55745F9B291972B000414462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITests.swift; sourceTree = "<group>"; };
 		55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		55745FBD29197D9E00414462 /* ItBookStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStore.swift; sourceTree = "<group>"; };
+		55745FC7291BFA9F00414462 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,8 @@
 			children = (
 				55745F8D291972AF00414462 /* AppDelegate.swift */,
 				55745F8F291972AF00414462 /* SceneDelegate.swift */,
-				55745F91291972AF00414462 /* ViewController.swift */,
 				55745FBD29197D9E00414462 /* ItBookStore.swift */,
+				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
 				55745F9B291972B000414462 /* Info.plist */,
@@ -257,9 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55745F92291972AF00414462 /* ViewController.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
+				55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */,
 				55745F90291972AF00414462 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
