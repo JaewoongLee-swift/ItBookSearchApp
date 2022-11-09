@@ -8,7 +8,7 @@
 import Foundation
 
 struct ItBookStore {
-    let error: Int
+    let error: String
     let total: String
     let page: String
     let books: [ItBook]
@@ -39,7 +39,7 @@ struct ItBookDetail {
     let price: String
     let imageURL: String
     let url: String
-    let pdf: ItBookPDF
+    let pdf: ItBookPDF?
 }
 
 struct ItBookPDF {
