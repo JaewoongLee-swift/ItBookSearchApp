@@ -55,3 +55,17 @@ class SearchCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 }
+
+extension SearchCollectionViewCell {
+    func addSubViews() {
+        [
+            titleLabel,
+            subtitleLabel,
+            isbn13Label,
+            priceLabel,
+            urlLabel,
+            imageView
+        ].forEach { addSubview($0) }
+        
+    }
+}
