@@ -14,11 +14,13 @@ enum ItBookStoreError: Error {
 
 //TODO: Unit Test 필요
 final class ItBookStoreManager {
-    let sesseion = URLSession.shared
+    let sesseion: URLSessionProtocol
     
-    init() { }
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.sesseion = session
+    }
     
-    func requestItBookStore<ItBookStore: Decodable>(bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
+    func requestItBookStore<ItBookStore: Decodable> (bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
         var url = "https://api.itbook.store/1.0/search/\(bookName)"
         if let page = page {
             url += "/\(page)"
@@ -28,7 +30,7 @@ final class ItBookStoreManager {
             return
         }
         
-        let dataTask = sesseion.dataTask(with: url) { data, response, error in
+        let dataTask: URLSessionDataTask = sesseion.dataTask(with: url) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
                 return
