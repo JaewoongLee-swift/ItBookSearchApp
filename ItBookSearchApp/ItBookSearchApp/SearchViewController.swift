@@ -52,6 +52,7 @@ class SearchViewController: UIViewController {
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 8.0
@@ -67,6 +68,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         
         setNavigationItems()
         setupLayout()
@@ -103,14 +105,17 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController {
     func setupLayout() {
+        view.addSubview(stackView)
         view.addSubview(collectionView)
         
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0).isActive = true
+        
+        collectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
     }
     
     func setNavigationItems() {
