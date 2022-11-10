@@ -10,18 +10,27 @@ import UIKit
 class DetailViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .blue
         
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.text = "Title : title"
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 16.0, weight: .medium)
+        label.text = "Subtitle : suttitle"
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -100,5 +109,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
     }
 }
