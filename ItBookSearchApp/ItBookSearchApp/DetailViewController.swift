@@ -37,66 +37,97 @@ class DetailViewController: UIViewController {
     
     private lazy var authorLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var isbn10Label: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var isbn13Label: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var pageLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var yearLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var ratingLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var urlLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var firstPDFButton: UIButton = {
         let button = UIButton()
+        
         
         return button
     }()
