@@ -17,11 +17,11 @@ class MockURLSession: URLSessionProtocol {
         self.response = response
     }
     
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return MockURLSessionDataTask {
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> ItBookSearchApp.URLSessionDataTaskProtocol {
+        return MockURLSessionDataTask(resumeHandler: {
             completionHandler(self.response.data,
                               self.response.urlResponse,
                               self.response.error)
-        }
+        })
     }
 }

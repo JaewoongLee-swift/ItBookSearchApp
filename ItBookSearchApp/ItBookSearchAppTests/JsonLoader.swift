@@ -57,6 +57,8 @@ class JsonLoader {
         guard let data = try? Data(contentsOf: fileURL) else {
             throw JsonLoaderError.dataConvertFail
         }
+        
+        return data
     }
     
     private static func checksIsJsonData(of data: Data) throws {
@@ -82,7 +84,7 @@ class JsonLoader {
         case JsonLoaderError.notJsonData:
             print("file data가 json형식이 아닙니다. 주석이 있다면 삭제해주십시오.")
         case JsonLoaderError.decodeFail:
-            print("json 디코딩이 실패하였습니다. type을 확인해주십시오."
+            print("json 디코딩이 실패하였습니다. type을 확인해주십시오.")
         default:
             print("기타 에러 \(error.localizedDescription)")
         }

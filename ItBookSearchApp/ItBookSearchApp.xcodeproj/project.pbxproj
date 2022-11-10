@@ -24,6 +24,7 @@
 		55745FF7291D63F400414462 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF6291D63F400414462 /* MockURLSession.swift */; };
 		55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */; };
 		55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFC291D71DA00414462 /* JsonLoader.swift */; };
+		55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		55745FFA291D6E5900414462 /* ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItBookStore.json; sourceTree = "<group>"; };
 		55745FFC291D71DA00414462 /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
+		55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStoreManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				55745FF6291D63F400414462 /* MockURLSession.swift */,
 				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
 				55745FFC291D71DA00414462 /* JsonLoader.swift */,
+				55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */,
 			);
 			path = ItBookSearchAppTests;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
+				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
