@@ -127,13 +127,16 @@ class DetailViewController: UIViewController {
     
     private lazy var firstPDFButton: UIButton = {
         let button = UIButton()
-        
+        button.setTitle("PDF1", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
     private lazy var secondPDFButton: UIButton = {
         let button = UIButton()
+        button.setTitle("PDF2", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
