@@ -40,5 +40,19 @@ final class SearchViewControllerTests: XCTestCase {
 
         XCTAssertTrue(result == view, "SearchViewController의 collectionView의 constraints가 제대로 설정되지 않았습니다.")
     }
+    
+    func test_searchCollectionView_naviagationController_title() {
+        searchViewController?.viewDidLoad()
+        let result = searchViewController?.navigationItem.title
+        
+        XCTAssertEqual("ItBookSearch", result, "SearchViewController의 navigation title이 제대로 설정되지 않았습니다.")
+    }
+    
+    func test_searchCollectionView_naviagationController_placeHolder() {
+        searchViewController?.viewDidLoad()
+        let result = searchViewController?.navigationItem.searchController?.searchBar.placeholder
+        
+        XCTAssertEqual("도서명을 검색해주세요.", result, "SearchViewController의 searchBar placeHolder가 제대로 설정되지 않았습니다.")
+    }
 
 }

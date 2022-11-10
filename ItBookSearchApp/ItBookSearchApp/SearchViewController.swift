@@ -22,6 +22,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationItems()
         setupLayout()
     }
 }
@@ -50,6 +52,10 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 }
 
+extension SearchViewController: UISearchBarDelegate {
+    
+}
+
 extension SearchViewController {
     func setupLayout() {
         view.addSubview(collectionView)
@@ -60,5 +66,17 @@ extension SearchViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
+    }
+    
+    func setNavigationItems() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "ItBookSearch"
+        
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "도서명을 검색해주세요."
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        
+        navigationItem.searchController = searchController
     }
 }
