@@ -14,10 +14,10 @@ enum ItBookStoreError: Error {
 
 //TODO: Unit Test 필요
 final class ItBookStoreManager {
-    let sesseion: URLSessionProtocol
+    let session: URLSessionProtocol
     
     init(session: URLSessionProtocol = URLSession.shared) {
-        self.sesseion = session
+        self.session = session
     }
     
     func requestItBookStore<ItBookStore: Decodable> (bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
@@ -30,7 +30,7 @@ final class ItBookStoreManager {
             return
         }
         
-        let dataTask: URLSessionDataTask = sesseion.dataTask(with: url) { data, response, error in
+        let dataTask: URLSessionDataTaskProtocol = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completionHandler(.failure(error))
                 return
@@ -49,7 +49,8 @@ final class ItBookStoreManager {
                 completionHandler(.failure(ItBookStoreError.requestFailError))
             }
                
-        }.resume()
+        }
+        dataTask.resume()
         
     }
 }
