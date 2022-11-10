@@ -6,3 +6,48 @@
 //
 
 import Foundation
+
+enum ItBookStoreError: Error {
+    case requestFailError
+    case jsonParsingError
+}
+
+//TODO: Unit Test 필요
+final class ItBookStoreManager {
+    let sesseion = URLSession.shared
+    
+    init() { }
+    
+    func requestItBookStore<ItBookStore: Decodable>(bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
+        var url = "https://api.itbook.store/1.0/search/\(bookName)"
+        if let page = page {
+            url += "/\(page)"
+        }
+        
+        guard let url = URL(string: url) else {
+            return
+        }
+        
+        let dataTask = sesseion.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completionHandler(.failure(error))
+                return
+            }
+            
+            if let data = data,
+               let response = response as? HTTPURLResponse,
+               (200..<300) ~= response.statusCode {
+                do {
+                    let data = try JSONDecoder().decode(ItBookStore.self, from: data)
+                    completionHandler(.success(data))
+                } catch {
+                    completionHandler(.failure(ItBookStoreError.jsonParsingError))
+                }
+            } else {
+                completionHandler(.failure(ItBookStoreError.requestFailError))
+            }
+               
+        }.resume()
+        
+    }
+}
