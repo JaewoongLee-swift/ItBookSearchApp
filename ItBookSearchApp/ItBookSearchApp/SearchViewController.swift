@@ -9,11 +9,13 @@ import UIKit
 
 class SearchViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
         
         return collectionView
     }()
@@ -25,23 +27,30 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        let height = 215.0
+        
+        return CGSize(width: width, height: height)
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //TODO: [ItBook]의 count를 return하도록 구현
-        0
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //TODO: Custom UICollectionViewCell 구현
-        UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.setupLayout()
+        
+        return cell
     }
 }
 
 extension SearchViewController {
-    //TODO: collectionView의 셀이 모두 등록된 이후 테스트 필요
     func setupLayout() {
         view.addSubview(collectionView)
         
