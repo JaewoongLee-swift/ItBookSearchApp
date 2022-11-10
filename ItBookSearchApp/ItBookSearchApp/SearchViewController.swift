@@ -14,14 +14,12 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = true
-        collectionView.backgroundColor = .red
         
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
         setupLayout()
     }
 }
