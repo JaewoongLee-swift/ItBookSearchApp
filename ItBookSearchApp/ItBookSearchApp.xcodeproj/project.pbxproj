@@ -63,6 +63,7 @@
 		55745FF2291D401900414462 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		55745FF6291D63F400414462 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		55745FFA291D6E5900414462 /* ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItBookStore.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
+				55745FFB291D6EB200414462 /* Json */,
 				55745FF6291D63F400414462 /* MockURLSession.swift */,
 				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
 			);
@@ -146,6 +148,14 @@
 				55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */,
 			);
 			path = ItBookSearchAppUITests;
+			sourceTree = "<group>";
+		};
+		55745FFB291D6EB200414462 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				55745FFA291D6E5900414462 /* ItBookStore.json */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
