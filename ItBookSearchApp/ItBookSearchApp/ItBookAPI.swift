@@ -20,7 +20,7 @@ final class ItBookStoreManager {
         self.session = session
     }
     
-    func requestItBookStore<ItBookStore: Decodable> (bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
+    func requestItBookStore (bookName: String, page: Int? = nil,completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
         var url = "https://api.itbook.store/1.0/search/\(bookName)"
         if let page = page {
             url += "/\(page)"
