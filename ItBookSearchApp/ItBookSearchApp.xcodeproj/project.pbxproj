@@ -22,6 +22,7 @@
 		55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */; };
 		55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF2291D401900414462 /* URLSessionProtocol.swift */; };
 		55745FF7291D63F400414462 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF6291D63F400414462 /* MockURLSession.swift */; };
+		55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
 		55745FF2291D401900414462 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		55745FF6291D63F400414462 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
 				55745FF6291D63F400414462 /* MockURLSession.swift */,
+				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
 			);
 			path = ItBookSearchAppTests;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
 			);
