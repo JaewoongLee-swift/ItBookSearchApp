@@ -20,6 +20,33 @@ class SearchViewController: UIViewController {
         return collectionView
     }()
     
+    lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Error : 0"
+        label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy var totalLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TotalPage : 0"
+        label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy var pageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Page : 0"
+        label.font = .systemFont(ofSize: 12.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
