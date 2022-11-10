@@ -19,6 +19,7 @@
 		55745FCA291C01EF00414462 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */; };
 		55745FEB291D264100414462 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEA291D264100414462 /* DetailViewController.swift */; };
 		55745FEF291D335300414462 /* ItBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEE291D335300414462 /* ItBookAPI.swift */; };
+		55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		55745FEA291D264100414462 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		55745FEE291D335300414462 /* ItBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookAPI.swift; sourceTree = "<group>"; };
+		55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
 				55745FEA291D264100414462 /* DetailViewController.swift */,
 				55745FEE291D335300414462 /* ItBookAPI.swift */,
+				55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
 				55745F9B291972B000414462 /* Info.plist */,
@@ -268,6 +271,7 @@
 			files = (
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
+				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
 				55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */,
 				55745FEB291D264100414462 /* DetailViewController.swift in Sources */,
