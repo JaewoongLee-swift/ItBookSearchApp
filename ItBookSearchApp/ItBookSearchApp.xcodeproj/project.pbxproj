@@ -17,6 +17,7 @@
 		55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FBD29197D9E00414462 /* ItBookStore.swift */; };
 		55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC7291BFA9F00414462 /* SearchViewController.swift */; };
 		55745FCA291C01EF00414462 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */; };
+		55745FCE291C940100414462 /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FCD291C940100414462 /* SearchViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		55745FBD29197D9E00414462 /* ItBookStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStore.swift; sourceTree = "<group>"; };
 		55745FC7291BFA9F00414462 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		55745FCD291C940100414462 /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
+				55745FCD291C940100414462 /* SearchViewControllerTests.swift */,
 			);
 			path = ItBookSearchAppTests;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55745FCE291C940100414462 /* SearchViewControllerTests.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
