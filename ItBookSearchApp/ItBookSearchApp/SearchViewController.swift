@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         let label = UILabel()
         label.text = "Error : 0"
         label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -33,6 +34,7 @@ class SearchViewController: UIViewController {
         let label = UILabel()
         label.text = "TotalPage : 0"
         label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -42,9 +44,25 @@ class SearchViewController: UIViewController {
         let label = UILabel()
         label.text = "Page : 0"
         label.font = .systemFont(ofSize: 12.0)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8.0
+        
+        [
+            errorLabel,
+            totalLabel,
+            pageLabel
+        ].forEach { stackView.addArrangedSubview($0) }
+        
+        return stackView
     }()
     
     override func viewDidLoad() {
