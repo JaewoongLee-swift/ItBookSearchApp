@@ -2,86 +2,86 @@
    "error":"0",
    "total":"77",
    "page":"1",
-   "books": [
+   "books":[
       {
-         "title":"MongoDB Notes for Professionals",
-         "subtitle":"",
-         "isbn13":"1001650286196",
-         "price":"$0.00",
-         "image":"https://itbook.store/img/books/1001650286196.png",
-         "url":"https://itbook.store/books/1001650286196"
+         "title":"Practical MongoDB",
+         "subtitle":"Architecting, Developing, and Administering MongoDB",
+         "isbn13":"9781484206485",
+         "price":"$41.65",
+         "image":"https://itbook.store/img/books/9781484206485.png",
+         "url":"https://itbook.store/books/9781484206485"
       },
       {
-         "title":"Node.js, MongoDB and Angular Web Development, 2nd Edition",
-         "subtitle":"The definitive guide to using the MEAN stack to build web applications",
-         "isbn13":"9780134655536",
-         "price":"$33.16",
-         "image":"https://itbook.store/img/books/9780134655536.png",
-         "url":"https://itbook.store/books/9780134655536"
+         "title":"The Definitive Guide to MongoDB, 3rd Edition",
+         "subtitle":"A complete guide to dealing with Big Data using MongoDB",
+         "isbn13":"9781484211830",
+         "price":"$49.99",
+         "image":"https://itbook.store/img/books/9781484211830.png",
+         "url":"https://itbook.store/books/9781484211830"
       },
       {
-         "title":"The Definitive Guide to MongoDB",
-         "subtitle":"The NoSQL Database for Cloud and Desktop Computing",
-         "isbn13":"9781430230519",
-         "price":"$39.99",
-         "image":"https://itbook.store/img/books/9781430230519.png",
-         "url":"https://itbook.store/books/9781430230519"
+         "title":"MongoDB Performance Tuning",
+         "subtitle":"Optimizing MongoDB Databases and their Applications",
+         "isbn13":"9781484268780",
+         "price":"$37.24",
+         "image":"https://itbook.store/img/books/9781484268780.png",
+         "url":"https://itbook.store/books/9781484268780"
       },
       {
-         "title":"Pro Hibernate and MongoDB",
-         "subtitle":"",
-         "isbn13":"9781430257943",
-         "price":"$47.27",
-         "image":"https://itbook.store/img/books/9781430257943.png",
-         "url":"https://itbook.store/books/9781430257943"
+         "title":"MongoDB in Action, 2nd Edition",
+         "subtitle":"Covers MongoDB version 3.0",
+         "isbn13":"9781617291609",
+         "price":"$19.99",
+         "image":"https://itbook.store/img/books/9781617291609.png",
+         "url":"https://itbook.store/books/9781617291609"
       },
       {
-         "title":"Scaling MongoDB",
-         "subtitle":"Sharding, Cluster Setup, and Administration",
-         "isbn13":"9781449303211",
+         "title":"Pentaho Analytics for MongoDB",
+         "subtitle":"Combine Pentaho Analytics and MongoDB to create powerful analysis and reporting solutions",
+         "isbn13":"9781782168355",
          "price":"$16.99",
-         "image":"https://itbook.store/img/books/9781449303211.png",
-         "url":"https://itbook.store/books/9781449303211"
+         "image":"https://itbook.store/img/books/9781782168355.png",
+         "url":"https://itbook.store/books/9781782168355"
       },
       {
-         "title":"50 Tips and Tricks for MongoDB Developers",
-         "subtitle":"Get the Most Out of Your Database",
-         "isbn13":"9781449304614",
-         "price":"$7.00",
-         "image":"https://itbook.store/img/books/9781449304614.png",
-         "url":"https://itbook.store/books/9781449304614"
+         "title":"Pentaho Analytics for MongoDB Cookbook",
+         "subtitle":"Over 50 recipes to learn how to use Pentaho Analytics and MongoDB to create powerful analysis and reporting solutions",
+         "isbn13":"9781783553273",
+         "price":"$35.99",
+         "image":"https://itbook.store/img/books/9781783553273.png",
+         "url":"https://itbook.store/books/9781783553273"
       },
       {
-         "title":"MongoDB and Python",
-         "subtitle":"Patterns and processes for the popular document-oriented database",
-         "isbn13":"9781449310370",
-         "price":"$6.88",
-         "image":"https://itbook.store/img/books/9781449310370.png",
-         "url":"https://itbook.store/books/9781449310370"
+         "title":"Web Development with MongoDB and NodeJS, 2nd Edition",
+         "subtitle":"Build an interactive and full-featured web application from scratch using Node.js and MongoDB",
+         "isbn13":"9781785287527",
+         "price":"$38.01",
+         "image":"https://itbook.store/img/books/9781785287527.png",
+         "url":"https://itbook.store/books/9781785287527"
       },
       {
-         "title":"MongoDB and PHP",
-         "subtitle":"Document-Oriented Data for Web Developers",
-         "isbn13":"9781449314361",
-         "price":"$14.99",
-         "image":"https://itbook.store/img/books/9781449314361.png",
-         "url":"https://itbook.store/books/9781449314361"
+         "title":"MongoDB Cookbook, 2nd Edition",
+         "subtitle":"Harness the latest features of MongoDB 3 with this collection of 80 recipes - from managing cloud platforms to app development, this book is a vital resource",
+         "isbn13":"9781785289989",
+         "price":"$44.99",
+         "image":"https://itbook.store/img/books/9781785289989.png",
+         "url":"https://itbook.store/books/9781785289989"
       },
       {
-         "title":"Building Node Applications with MongoDB and Backbone",
-         "subtitle":"Rapid Prototyping and Scalable Deployment",
-         "isbn13":"9781449337391",
-         "price":"$4.85",
-         "image":"https://itbook.store/img/books/9781449337391.png",
-         "url":"https://itbook.store/books/9781449337391"
+         "title":"The Little MongoDB Book",
+         "subtitle":"",
+         "isbn13":"1001592208320",
+         "price":"$0.00",
+         "image":"https://itbook.store/img/books/1001592208320.png",
+         "url":"https://itbook.store/books/1001592208320"
       },
       {
-         "title":"MongoDB Applied Design Patterns",
-         "subtitle":"Practical Use Cases with the Leading NoSQL Database",
-         "isbn13":"9781449340049",
-         "price":"$29.99",
-         "image":"https://itbook.store/img/books/9781449340049.png",
-         "url":"https://itbook.store/books/9781449340049"
+         "title":"Learning MongoDB",
+         "subtitle":"",
+         "isbn13":"1001629462276",
+         "price":"$0.00",
+         "image":"https://itbook.store/img/books/1001629462276.png",
+         "url":"https://itbook.store/books/1001629462276"
       }
    ]
 }
