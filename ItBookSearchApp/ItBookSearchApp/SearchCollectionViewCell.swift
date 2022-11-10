@@ -76,8 +76,8 @@ extension SearchCollectionViewCell {
         ].forEach { addSubview($0) }
         
         //TODO: Constraints Unit Test 필요
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: -20).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -20).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         
