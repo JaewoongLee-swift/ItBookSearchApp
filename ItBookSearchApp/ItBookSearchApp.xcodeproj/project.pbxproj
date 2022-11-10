@@ -20,6 +20,7 @@
 		55745FEB291D264100414462 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEA291D264100414462 /* DetailViewController.swift */; };
 		55745FEF291D335300414462 /* ItBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEE291D335300414462 /* ItBookAPI.swift */; };
 		55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */; };
+		55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF2291D401900414462 /* URLSessionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		55745FEA291D264100414462 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		55745FEE291D335300414462 /* ItBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookAPI.swift; sourceTree = "<group>"; };
 		55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		55745FF2291D401900414462 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				55745FEA291D264100414462 /* DetailViewController.swift */,
 				55745FEE291D335300414462 /* ItBookAPI.swift */,
 				55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */,
+				55745FF2291D401900414462 /* URLSessionProtocol.swift */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
 				55745F9B291972B000414462 /* Info.plist */,
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
 				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
