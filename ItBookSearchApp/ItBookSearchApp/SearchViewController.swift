@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     var searchedText = ""
     var totalPage: Int?
     var currentPage: Int?
+    var isPaging = false
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -122,11 +123,21 @@ extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             
             let contentOffset_y = scrollView.contentOffset.y
-            let collectionViewContentSize = collectionView.contentSize.height
-            let pagination_y = collectionViewContentSize * 0.2
+            let collectionViewContentSize = scrollView.contentSize.height
+            let height = scrollView.frame.height
             
-            if contentOffset_y > collectionViewContentSize - pagination_y {
-                //TODO: Pagination 될 경우 데이터 호출로직 구현
+            guard !isPaging else { return }
+        
+            if contentOffset_y > (collectionViewContentSize - height) {
+                isPaging = true
+                
+                guard let totalPage = totalPage else { return }
+                guard let currentPage = currentPage else { return }
+                
+                if totalPage > currentPage {
+                    self.currentPage? += 1
+                    requestItBookStorePagination(from: searchedText, at: self.currentPage ?? 0)
+                }
             }
             
         }
@@ -154,7 +165,7 @@ extension SearchViewController {
         
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "도서명을 검색해주세요."
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
@@ -190,12 +201,23 @@ extension SearchViewController {
             if case .success(let data) = response {
                 self?.itBookStore = data
                 self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
+                self?.totalPage = Int(self?.itBookStore?.total ?? "0")
+                self?.currentPage = Int(self?.itBookStore?.page ?? "0")
                 
                 DispatchQueue.main.async {
                     self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
-                    self?.totalLabel.text = "TotalPage : \(self?.itBookStore?.total ?? "0")"
-                    self?.pageLabel.text = "Page : \(self?.itBookStore?.page ?? "0")"
+                    if let totalPage = self?.totalPage {
+                        if let currentPage = self?.currentPage {
+                            if currentPage > totalPage {
+                                self?.totalLabel.text = "TotalPage : \(currentPage)"
+                            } else {
+                                self?.totalLabel.text = "TotalPage : \(totalPage)"
+                            }
+                            self?.pageLabel.text = "Page : \(currentPage)"
+                        }
+                    }
                     self?.collectionView.reloadData()
+                    self?.isPaging = false
                 }
                 
             } else if case .failure(let error) = response {
