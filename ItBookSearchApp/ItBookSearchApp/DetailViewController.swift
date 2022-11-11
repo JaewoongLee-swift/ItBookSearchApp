@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    let bookISBN13: String
     var itBookDetailManager: ItBookDetailManager?
     var itBookDetail: ItBookDetail?
     
@@ -169,11 +170,23 @@ class DetailViewController: UIViewController {
         return button
     }()
     
+    init(isbn13: String) {
+        self.bookISBN13 = isbn13
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         setupLayout()
+        
+        requestItBookDetail(from: bookISBN13)
     }
 }
 
@@ -279,7 +292,7 @@ extension DetailViewController {
                     self.yearLabel.text = "Year: \(bookDetail.year)"
                     self.ratingLabel.text = "Rating: \(bookDetail.rating)"
                     self.descriptionLabel.text = "Description: \(bookDetail.desc)"
-                    self.priceLabel.text = "Price: $\(bookDetail.subtitle)"
+                    self.priceLabel.text = "Price: $\(bookDetail.price)"
                     self.urlLabel.text = "URL: \(bookDetail.url)"
                 }
             }
