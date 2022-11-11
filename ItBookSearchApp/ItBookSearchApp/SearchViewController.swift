@@ -186,6 +186,7 @@ extension SearchViewController {
                     self?.totalLabel.text = "TotalPage : \(self?.totalPage ?? 0)"
                     self?.pageLabel.text = "Page : \(self?.currentPage ?? 0)"
                     self?.collectionView.reloadData()
+                    self?.isPaging = false
                 }
                 
             } else if case .failure(let error) = response {
