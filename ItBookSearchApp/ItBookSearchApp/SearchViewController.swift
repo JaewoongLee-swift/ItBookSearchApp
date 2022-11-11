@@ -166,7 +166,6 @@ extension SearchViewController {
     }
     
     func setNavigationItems() {
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "ItBookSearch"
         
         let searchController = UISearchController()
