@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -21,7 +22,8 @@ class DetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.font = .systemFont(ofSize: 16.0, weight: .bold)
+        label.numberOfLines = 2
         label.text = "Title : title"
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -212,10 +214,11 @@ extension DetailViewController {
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10.0).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 350.0).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10.0).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         
         subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0).isActive = true
         subtitleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
@@ -243,6 +246,7 @@ extension DetailViewController {
         
         descriptionLabel.topAnchor.constraint(equalTo: ratingLabel.bottomAnchor, constant: 8.0).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         
         priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8.0).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
