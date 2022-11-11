@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import PDFKit
 
 class PDFViewController: UIViewController {
+    private lazy var pdfView: PDFView = {
+        let pdfView = PDFView()
+        pdfView.autoScales = true
+        pdfView.displayMode = .singlePageContinuous
+        
+        return pdfView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
