@@ -8,9 +8,13 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    let bookISBN13: String
+    var itBookDetailManager: ItBookDetailManager?
+    var itBookDetail: ItBookDetail?
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -18,7 +22,8 @@ class DetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.font = .systemFont(ofSize: 16.0, weight: .bold)
+        label.numberOfLines = 2
         label.text = "Title : title"
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -166,11 +171,23 @@ class DetailViewController: UIViewController {
         return button
     }()
     
+    init(isbn13: String) {
+        self.bookISBN13 = isbn13
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         setupLayout()
+        
+        requestItBookDetail(from: bookISBN13)
     }
 }
 
@@ -197,10 +214,11 @@ extension DetailViewController {
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10.0).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 350.0).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10.0).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         
         subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0).isActive = true
         subtitleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
@@ -228,6 +246,7 @@ extension DetailViewController {
         
         descriptionLabel.topAnchor.constraint(equalTo: ratingLabel.bottomAnchor, constant: 8.0).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         
         priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8.0).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
@@ -244,5 +263,42 @@ extension DetailViewController {
         secondPDFButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         secondPDFButton.widthAnchor.constraint(equalToConstant: 125.0).isActive = true
         secondPDFButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+    }
+    
+    func requestItBookDetail(from isbn13: String, by manager: ItBookDetailManager = ItBookDetailManager()) {
+        itBookDetailManager = manager
+        
+        itBookDetailManager?.requestItBookDetail(isbn13: isbn13) { [weak self] response in
+            guard let self = self else { return }
+            if case .success(let data) = response {
+                self.itBookDetail = data
+                guard let bookDetail = self.itBookDetail else { return }
+                
+                if let url = URL(string: bookDetail.imageURL) {
+                    DispatchQueue.global().async {
+                        if let imageData = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                self.imageView.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.titleLabel.text = "Title: \(bookDetail.title)"
+                    self.subtitleLabel.text = "Subtitle: \(bookDetail.subtitle)"
+                    self.authorLabel.text = "Author: \(bookDetail.authors)"
+                    self.publisherLabel.text = "Publisher: \(bookDetail.authors)"
+                    self.isbn10Label.text = "ISBN10: \(bookDetail.isbn10)"
+                    self.isbn13Label.text = "ISBN13: \(bookDetail.isbn13)"
+                    self.pageLabel.text = "Page: \(bookDetail.pages)"
+                    self.yearLabel.text = "Year: \(bookDetail.year)"
+                    self.ratingLabel.text = "Rating: \(bookDetail.rating)"
+                    self.descriptionLabel.text = "Description: \(bookDetail.desc)"
+                    self.priceLabel.text = "Price: $\(bookDetail.price)"
+                    self.urlLabel.text = "URL: \(bookDetail.url)"
+                }
+            }
+        }
     }
 }

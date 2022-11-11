@@ -92,6 +92,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController(isbn13: books[indexPath.row].isbn13)
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
@@ -160,7 +166,6 @@ extension SearchViewController {
     }
     
     func setNavigationItems() {
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "ItBookSearch"
         
         let searchController = UISearchController()
