@@ -122,13 +122,13 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             
-            let contentOffset_y = scrollView.contentOffset.y
+            let contentOffsetY = scrollView.contentOffset.y
             let collectionViewContentSize = scrollView.contentSize.height
             let height = scrollView.frame.height
             
             guard !isPaging else { return }
         
-            if contentOffset_y > (collectionViewContentSize - height) {
+            if contentOffsetY > (collectionViewContentSize - height) {
                 isPaging = true
                 
                 guard let totalPage = totalPage else { return }
