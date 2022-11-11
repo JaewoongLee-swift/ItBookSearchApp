@@ -11,11 +11,7 @@ class SearchViewController: UIViewController {
     var itBookStoreManager: ItBookStoreManager?
     var itBookStore: ItBookStore?
     
-    var books: [ItBook]? {
-        get {
-            return itBookStore?.books
-        }
-    }
+    var books : [ItBook] = []
     
     var searchedText = ""
     var totalPage: Int?
@@ -99,19 +95,13 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let books = books {
-            return books.count
-        } else {
-            return 0
-        }
+        books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        if let books = books {
             cell.configure(books[indexPath.row])
-        }
         
         return cell
     }
@@ -176,6 +166,28 @@ extension SearchViewController {
         itBookStoreManager?.requestItBookStore(bookName: title) { [weak self] response in
             if case .success(let data) = response {
                 self?.itBookStore = data
+                self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
+                
+                DispatchQueue.main.async {
+                    self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
+                    self?.totalLabel.text = "TotalPage : \(self?.itBookStore?.total ?? "0")"
+                    self?.pageLabel.text = "Page : \(self?.itBookStore?.page ?? "0")"
+                    self?.collectionView.reloadData()
+                }
+                
+            } else if case .failure(let error) = response {
+                print(error)
+            }
+        }
+    }
+    
+    func requestItBookStorePagination(from title: String, at page: Int, by manager: ItBookStoreManager = ItBookStoreManager()) {
+        itBookStoreManager = manager
+        
+        itBookStoreManager?.requestItBookStore(bookName: title, page: page) { [weak self] response in
+            if case .success(let data) = response {
+                self?.itBookStore = data
+                self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
                 
                 DispatchQueue.main.async {
                     self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
