@@ -160,7 +160,6 @@ extension SearchViewController {
         navigationItem.searchController = searchController
     }
     
-    //TODO: Unit Test 필요
     func requestItBookStore(from title: String, by manager: ItBookStoreManager = ItBookStoreManager()) {
         itBookStoreManager = manager
         
