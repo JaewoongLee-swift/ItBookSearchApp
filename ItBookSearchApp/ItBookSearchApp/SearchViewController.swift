@@ -92,6 +92,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController()
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
