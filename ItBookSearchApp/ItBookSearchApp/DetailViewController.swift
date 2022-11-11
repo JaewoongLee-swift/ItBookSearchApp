@@ -259,9 +259,6 @@ extension DetailViewController {
                 self.itBookDetail = data
                 guard let bookDetail = self.itBookDetail else { return }
                 
-                self.firstPDFURL = bookDetail.pdf?.chapter2
-                self.secondPDFURL = bookDetail.pdf?.chapter5
-                
                 if let url = URL(string: bookDetail.imageURL) {
                     DispatchQueue.global().async {
                         if let imageData = try? Data(contentsOf: url) {

@@ -1,5 +1,5 @@
 //
-//  ViewControllerTests.swift
+//  SearchViewControllerTests.swift
 //  ItBookSearchAppTests
 //
 //  Created by 이재웅 on 2022/11/11.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import ItBookSearchApp
 
-final class ViewController: XCTestCase {
+final class SearchViewController: XCTestCase {
     var sut: SearchViewController!
 
     override func setUpWithError() throws {
