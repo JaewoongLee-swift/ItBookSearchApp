@@ -12,7 +12,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "title"
+        label.text = "title :"
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -21,7 +21,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Subtitle"
+        label.text = "Subtitle :"
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -30,7 +30,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var isbn13Label: UILabel = {
         let label = UILabel()
-        label.text = "isbn13"
+        label.text = "isbn13 :"
         label.font = .systemFont(ofSize: 12.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,7 +39,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "$price"
+        label.text = "price :"
         label.font = .systemFont(ofSize: 12.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,7 +48,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var urlLabel: UILabel = {
         let label = UILabel()
-        label.text = "https://url"
         label.font = .systemFont(ofSize: 12.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -57,7 +56,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -65,7 +63,27 @@ class SearchCollectionViewCell: UICollectionViewCell {
 }
 
 extension SearchCollectionViewCell {
-    func setupLayout() {
+    func configure(_ book: ItBook) {
+        titleLabel.text = book.title
+        subtitleLabel.text = book.subtitle
+        isbn13Label.text = book.isbn13
+        priceLabel.text = book.price
+        urlLabel.text = book.url
+        
+        if let url = URL(string: book.imageURL) {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        self.imageView.image = UIImage(data: data)
+                    }
+                }
+            }
+        }
+        
+        setupLayout()
+    }
+    
+    private func setupLayout() {
         [
             titleLabel,
             subtitleLabel,
@@ -75,7 +93,6 @@ extension SearchCollectionViewCell {
             imageView
         ].forEach { addSubview($0) }
         
-        //TODO: Constraints Unit Test 필요
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
