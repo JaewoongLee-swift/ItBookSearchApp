@@ -30,6 +30,8 @@
 		55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746006291E690B00414462 /* ItBookDetailManagerTests.swift */; };
 		5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */; };
 		5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */; };
+		55746012291E848D00414462 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746011291E848D00414462 /* ViewControllerTests.swift */; };
+		55746014291E8EF600414462 /* SwiftItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746013291E8EF600414462 /* SwiftItBookStore.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		55746006291E690B00414462 /* ItBookDetailManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookDetailManagerTests.swift; sourceTree = "<group>"; };
 		55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Securing_DevOps_ItBookDetail.json; sourceTree = "<group>"; };
 		5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FileWeb_Scraping_with_Python_ItBookDetail.json; sourceTree = "<group>"; };
+		55746011291E848D00414462 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		55746013291E8EF600414462 /* SwiftItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwiftItBookStore.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
+				55746011291E848D00414462 /* ViewControllerTests.swift */,
 				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
 			path = ItBookSearchAppTests;
@@ -173,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				55745FFA291D6E5900414462 /* MongoDBItBookStore.json */,
+				55746013291E8EF600414462 /* SwiftItBookStore.json */,
 				55746002291E570B00414462 /* EmptyItBookStore.json */,
 				55746004291E57FA00414462 /* SearchTextNilItBookStore.json */,
 			);
@@ -336,6 +342,7 @@
 				55746003291E570B00414462 /* EmptyItBookStore.json in Resources */,
 				5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */,
 				55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */,
+				55746014291E8EF600414462 /* SwiftItBookStore.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +380,7 @@
 				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
+				55746012291E848D00414462 /* ViewControllerTests.swift in Sources */,
 				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
 				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
