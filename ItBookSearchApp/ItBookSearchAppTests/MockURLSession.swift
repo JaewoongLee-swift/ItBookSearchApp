@@ -24,4 +24,22 @@ class MockURLSession: URLSessionProtocol {
                               self.response.error)
         })
     }
+    
+    static func make(url: String, data: Data?, statusCode: Int) -> MockURLSession {
+        let mockURLSession: MockURLSession = {
+            let urlResponse = HTTPURLResponse(url: URL(string: url)!,
+                                              statusCode: statusCode,
+                                              httpVersion: nil,
+                                              headerFields: nil)
+            let mockResponse: MockURLSession.Response = (data: data,
+                                                         urlResponse: urlResponse,
+                                                         error: nil
+            )
+            let mockURLSession = MockURLSession(response: mockResponse)
+            
+            return mockURLSession
+        }()
+        
+        return mockURLSession
+    }
 }

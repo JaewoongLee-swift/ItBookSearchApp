@@ -26,19 +26,10 @@ final class ItBookStoreManagerTests: XCTestCase {
         //given
         let searchText = "mongoDB"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
-        let mockResponse: MockURLSession.Response = {
-            let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
-            let successResponse = HTTPURLResponse(
-                url: URL(string: url)!,
-                statusCode: 200,
-                httpVersion: nil,
-                headerFields: nil
-            )
-            
-            return (data: data, urlResponse: successResponse, error: nil)
-        }()
-        
-        let mockURLSession = MockURLSession(response: mockResponse)
+        let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
+
+        let mockURLSession = MockURLSession.make(
+            url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
         
         //when
@@ -61,19 +52,9 @@ final class ItBookStoreManagerTests: XCTestCase {
         //given
         let searchText = "fefagawgrgrga"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
-        let mockResponse: MockURLSession.Response = {
-            let data: Data? = JsonLoader.data(fileName: "EmptyItBookStore")
-            let successResponse = HTTPURLResponse(
-                url: URL(string: url)!,
-                statusCode: 200,
-                httpVersion: nil,
-                headerFields: nil
-            )
-            
-            return (data: data, urlResponse: successResponse, error: nil)
-        }()
+        let data: Data? = JsonLoader.data(fileName: "EmptyItBookStore")
         
-        let mockURLSession = MockURLSession(response: mockResponse)
+        let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
         
         //when
@@ -96,19 +77,9 @@ final class ItBookStoreManagerTests: XCTestCase {
         //given
         let searchText = ""
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
-        let mockResponse: MockURLSession.Response = {
-            let data: Data? = JsonLoader.data(fileName: "SearchTextNilItBookStore")
-            let successResponse = HTTPURLResponse(
-                url: URL(string: url)!,
-                statusCode: 200,
-                httpVersion: nil,
-                headerFields: nil
-            )
-            
-            return (data: data, urlResponse: successResponse, error: nil)
-        }()
+        let data: Data? = JsonLoader.data(fileName: "SearchTextNilItBookStore")
         
-        let mockURLSession = MockURLSession(response: mockResponse)
+        let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
         
         //when
@@ -131,19 +102,9 @@ final class ItBookStoreManagerTests: XCTestCase {
         //given
         let searchText = "mongoDB"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
-        let mockResponse: MockURLSession.Response = {
-            let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
-            let successResponse = HTTPURLResponse(
-                url: URL(string: url)!,
-                statusCode: 500,
-                httpVersion: nil,
-                headerFields: nil
-            )
-            
-            return (data: data, urlResponse: successResponse, error: nil)
-        }()
+        let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
         
-        let mockURLSession = MockURLSession(response: mockResponse)
+        let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 500)
         let sut = ItBookStoreManager(session: mockURLSession)
         
         //when
