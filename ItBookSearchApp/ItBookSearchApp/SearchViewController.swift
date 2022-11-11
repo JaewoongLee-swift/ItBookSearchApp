@@ -8,6 +8,14 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    var itBookStore: ItBookStore?
+    
+    var books: [ItBook]? {
+        get {
+            return itBookStore?.books
+        }
+    }
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
