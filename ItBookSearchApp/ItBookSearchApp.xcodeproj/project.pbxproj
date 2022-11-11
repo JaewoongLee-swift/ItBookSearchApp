@@ -27,6 +27,7 @@
 		55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */; };
 		55746003291E570B00414462 /* EmptyItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746002291E570B00414462 /* EmptyItBookStore.json */; };
 		55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746004291E57FA00414462 /* SearchTextNilItBookStore.json */; };
+		55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746006291E690B00414462 /* ItBookDetailManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStoreManagerTests.swift; sourceTree = "<group>"; };
 		55746002291E570B00414462 /* EmptyItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyItBookStore.json; sourceTree = "<group>"; };
 		55746004291E57FA00414462 /* SearchTextNilItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTextNilItBookStore.json; sourceTree = "<group>"; };
+		55746006291E690B00414462 /* ItBookDetailManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookDetailManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
 				55745FFC291D71DA00414462 /* JsonLoader.swift */,
 				55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */,
+				55746006291E690B00414462 /* ItBookDetailManagerTests.swift */,
 			);
 			path = ItBookSearchAppTests;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
+				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
 				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
