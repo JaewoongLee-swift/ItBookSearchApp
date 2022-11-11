@@ -18,6 +18,18 @@
 		55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC7291BFA9F00414462 /* SearchViewController.swift */; };
 		55745FCA291C01EF00414462 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */; };
 		55745FEB291D264100414462 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEA291D264100414462 /* DetailViewController.swift */; };
+		55745FEF291D335300414462 /* ItBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FEE291D335300414462 /* ItBookAPI.swift */; };
+		55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */; };
+		55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF2291D401900414462 /* URLSessionProtocol.swift */; };
+		55745FF7291D63F400414462 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF6291D63F400414462 /* MockURLSession.swift */; };
+		55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */; };
+		55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFC291D71DA00414462 /* JsonLoader.swift */; };
+		55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */; };
+		55746003291E570B00414462 /* EmptyItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746002291E570B00414462 /* EmptyItBookStore.json */; };
+		55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746004291E57FA00414462 /* SearchTextNilItBookStore.json */; };
+		55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746006291E690B00414462 /* ItBookDetailManagerTests.swift */; };
+		5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */; };
+		5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +65,19 @@
 		55745FC7291BFA9F00414462 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		55745FEA291D264100414462 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		55745FEE291D335300414462 /* ItBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookAPI.swift; sourceTree = "<group>"; };
+		55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		55745FF2291D401900414462 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		55745FF6291D63F400414462 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		55745FFA291D6E5900414462 /* MongoDBItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MongoDBItBookStore.json; sourceTree = "<group>"; };
+		55745FFC291D71DA00414462 /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
+		55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStoreManagerTests.swift; sourceTree = "<group>"; };
+		55746002291E570B00414462 /* EmptyItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyItBookStore.json; sourceTree = "<group>"; };
+		55746004291E57FA00414462 /* SearchTextNilItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTextNilItBookStore.json; sourceTree = "<group>"; };
+		55746006291E690B00414462 /* ItBookDetailManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookDetailManagerTests.swift; sourceTree = "<group>"; };
+		55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Securing_DevOps_ItBookDetail.json; sourceTree = "<group>"; };
+		5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FileWeb_Scraping_with_Python_ItBookDetail.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +134,7 @@
 				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
 				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
 				55745FEA291D264100414462 /* DetailViewController.swift */,
+				55746010291E7C6700414462 /* Network */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
 				55745F9B291972B000414462 /* Info.plist */,
@@ -120,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
+				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
 			path = ItBookSearchAppTests;
 			sourceTree = "<group>";
@@ -131,6 +158,65 @@
 				55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */,
 			);
 			path = ItBookSearchAppUITests;
+			sourceTree = "<group>";
+		};
+		55745FFB291D6EB200414462 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				5574600D291E7C2D00414462 /* ItBookDetailJson */,
+				55746008291E696200414462 /* ItBookStoreJson */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		55746008291E696200414462 /* ItBookStoreJson */ = {
+			isa = PBXGroup;
+			children = (
+				55745FFA291D6E5900414462 /* MongoDBItBookStore.json */,
+				55746002291E570B00414462 /* EmptyItBookStore.json */,
+				55746004291E57FA00414462 /* SearchTextNilItBookStore.json */,
+			);
+			path = ItBookStoreJson;
+			sourceTree = "<group>";
+		};
+		5574600D291E7C2D00414462 /* ItBookDetailJson */ = {
+			isa = PBXGroup;
+			children = (
+				55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */,
+				5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */,
+			);
+			path = ItBookDetailJson;
+			sourceTree = "<group>";
+		};
+		5574600E291E7C4C00414462 /* MockURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				55745FF6291D63F400414462 /* MockURLSession.swift */,
+				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
+				55745FFC291D71DA00414462 /* JsonLoader.swift */,
+			);
+			path = MockURLSession;
+			sourceTree = "<group>";
+		};
+		5574600F291E7C5700414462 /* ItBookAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				55745FFB291D6EB200414462 /* Json */,
+				5574600E291E7C4C00414462 /* MockURLSession */,
+				55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */,
+				55746006291E690B00414462 /* ItBookDetailManagerTests.swift */,
+			);
+			path = ItBookAPITests;
+			sourceTree = "<group>";
+		};
+		55746010291E7C6700414462 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				55745FEE291D335300414462 /* ItBookAPI.swift */,
+				55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */,
+				55745FF2291D401900414462 /* URLSessionProtocol.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +332,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */,
+				55746003291E570B00414462 /* EmptyItBookStore.json in Resources */,
+				5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */,
+				55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +353,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
+				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
+				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
 				55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */,
 				55745FEB291D264100414462 /* DetailViewController.swift in Sources */,
@@ -276,7 +369,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */,
+				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
+				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
+				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
+				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
