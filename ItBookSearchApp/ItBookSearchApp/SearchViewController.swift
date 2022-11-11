@@ -8,6 +8,15 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    var itBookStoreManager: ItBookStoreManager?
+    var itBookStore: ItBookStore?
+    
+    var books: [ItBook]? {
+        get {
+            return itBookStore?.books
+        }
+    }
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -86,21 +95,32 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO: [ItBook]의 count를 return하도록 구현
-        3
+        if let books = books {
+            return books.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.setupLayout()
+        if let books = books {
+            cell.configure(books[indexPath.row])
+        }
         
         return cell
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.searchTextField.text {
+            if text != "" {
+                requestItBookStore(from: text)
+            }
+        }
+    }
 }
 
 extension SearchViewController {
@@ -128,5 +148,25 @@ extension SearchViewController {
         searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
+    }
+    
+    func requestItBookStore(from title: String, by manager: ItBookStoreManager = ItBookStoreManager()) {
+        itBookStoreManager = manager
+        
+        itBookStoreManager?.requestItBookStore(bookName: title) { [weak self] response in
+            if case .success(let data) = response {
+                self?.itBookStore = data
+                
+                DispatchQueue.main.async {
+                    self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
+                    self?.totalLabel.text = "TotalPage : \(self?.itBookStore?.total ?? "0")"
+                    self?.pageLabel.text = "Page : \(self?.itBookStore?.page ?? "0")"
+                    self?.collectionView.reloadData()
+                }
+                
+            } else if case .failure(let error) = response {
+                print(error)
+            }
+        }
     }
 }
