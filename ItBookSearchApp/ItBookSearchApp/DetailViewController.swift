@@ -8,6 +8,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var itBookDetailManager: ItBookDetailManager?
+    var itBookDetail: ItBookDetail?
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
@@ -244,5 +247,46 @@ extension DetailViewController {
         secondPDFButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
         secondPDFButton.widthAnchor.constraint(equalToConstant: 125.0).isActive = true
         secondPDFButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+    }
+    
+    //TODO: Unit Test 필요
+    func requestItBookDetail(from isbn13: String, by manager: ItBookDetailManager = ItBookDetailManager()) {
+        itBookDetailManager = manager
+        
+        itBookDetailManager?.requestItBookDetail(isbn13: isbn13) { [weak self] response in
+            guard let self = self else { return }
+            if case .success(let data) = response {
+                self.itBookDetail = data
+                guard let bookDetail = self.itBookDetail else { return }
+                
+                self.firstPDFURL = bookDetail.pdf?.chapter2
+                self.secondPDFURL = bookDetail.pdf?.chapter5
+                
+                if let url = URL(string: bookDetail.imageURL) {
+                    DispatchQueue.global().async {
+                        if let imageData = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                self.imageView.image = UIImage(data: imageData)
+                            }
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.titleLabel.text = "Title: \(bookDetail.title)"
+                    self.subtitleLabel.text = "Subtitle: \(bookDetail.subtitle)"
+                    self.authorLabel.text = "Author: \(bookDetail.authors)"
+                    self.publisherLabel.text = "Publisher: \(bookDetail.authors)"
+                    self.isbn10Label.text = "ISBN10: \(bookDetail.isbn10)"
+                    self.isbn13Label.text = "ISBN13: \(bookDetail.isbn13)"
+                    self.pageLabel.text = "Page: \(bookDetail.pages)"
+                    self.yearLabel.text = "Year: \(bookDetail.year)"
+                    self.ratingLabel.text = "Rating: \(bookDetail.rating)"
+                    self.descriptionLabel.text = "Description: \(bookDetail.desc)"
+                    self.priceLabel.text = "Price: $\(bookDetail.subtitle)"
+                    self.urlLabel.text = "URL: \(bookDetail.url)"
+                }
+            }
+        }
     }
 }
