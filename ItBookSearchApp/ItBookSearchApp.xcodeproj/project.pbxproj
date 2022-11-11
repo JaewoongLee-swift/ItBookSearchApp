@@ -28,6 +28,8 @@
 		55746003291E570B00414462 /* EmptyItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746002291E570B00414462 /* EmptyItBookStore.json */; };
 		55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746004291E57FA00414462 /* SearchTextNilItBookStore.json */; };
 		55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746006291E690B00414462 /* ItBookDetailManagerTests.swift */; };
+		5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */; };
+		5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		55746002291E570B00414462 /* EmptyItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyItBookStore.json; sourceTree = "<group>"; };
 		55746004291E57FA00414462 /* SearchTextNilItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchTextNilItBookStore.json; sourceTree = "<group>"; };
 		55746006291E690B00414462 /* ItBookDetailManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookDetailManagerTests.swift; sourceTree = "<group>"; };
+		55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Securing_DevOps_ItBookDetail.json; sourceTree = "<group>"; };
+		5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FileWeb_Scraping_with_Python_ItBookDetail.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 			children = (
 				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
 				55745FFB291D6EB200414462 /* Json */,
+				55746009291E698300414462 /* Securing_DevOps_ItBookDetail.json */,
+				5574600B291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json */,
 				55745FF6291D63F400414462 /* MockURLSession.swift */,
 				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
 				55745FFC291D71DA00414462 /* JsonLoader.swift */,
@@ -166,11 +172,19 @@
 		55745FFB291D6EB200414462 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				55746008291E696200414462 /* ItBookStoreJson */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		55746008291E696200414462 /* ItBookStoreJson */ = {
+			isa = PBXGroup;
+			children = (
 				55745FFA291D6E5900414462 /* MongoDBItBookStore.json */,
 				55746002291E570B00414462 /* EmptyItBookStore.json */,
 				55746004291E57FA00414462 /* SearchTextNilItBookStore.json */,
 			);
-			path = Json;
+			path = ItBookStoreJson;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */,
 				55746003291E570B00414462 /* EmptyItBookStore.json in Resources */,
+				5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */,
 				55746005291E57FA00414462 /* SearchTextNilItBookStore.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

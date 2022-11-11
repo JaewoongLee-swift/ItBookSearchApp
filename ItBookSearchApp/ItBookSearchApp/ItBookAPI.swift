@@ -54,7 +54,6 @@ final class ItBookStoreManager {
     }
 }
 
-//TODO: Unit Test 필요
 final class ItBookDetailManager {
     let session: URLSessionProtocol
     
@@ -62,7 +61,7 @@ final class ItBookDetailManager {
         self.session = session
     }
     
-    func requestItBookStore (isbn13: String, completionHandler: @escaping (Result<ItBookStore, Error>) -> Void) {
+    func requestItBookDetail (isbn13: String, completionHandler: @escaping (Result<ItBookDetail, Error>) -> Void) {
         let url = "https://api.itbook.store/1.0/books/\(isbn13)"
         
         guard let url = URL(string: url) else {
@@ -79,7 +78,7 @@ final class ItBookDetailManager {
                let response = response as? HTTPURLResponse,
                (200..<300) ~= response.statusCode {
                 do {
-                    let data = try JSONDecoder().decode(ItBookStore.self, from: data)
+                    let data = try JSONDecoder().decode(ItBookDetail.self, from: data)
                     completionHandler(.success(data))
                 } catch {
                     completionHandler(.failure(ItBookStoreError.jsonParsingError))
