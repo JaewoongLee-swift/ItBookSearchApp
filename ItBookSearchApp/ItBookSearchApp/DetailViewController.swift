@@ -158,6 +158,8 @@ class DetailViewController: UIViewController {
         button.layer.cornerRadius = 12.0
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(self, action: #selector(touchFirstPDFButton), for: .touchUpInside)
+        
         return button
     }()
     
@@ -167,6 +169,8 @@ class DetailViewController: UIViewController {
         button.backgroundColor = .gray
         button.layer.cornerRadius = 12.0
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(touchSecondPDFButton), for: .touchUpInside)
         
         return button
     }()
@@ -300,5 +304,15 @@ extension DetailViewController {
                 }
             }
         }
+    }
+    
+    //TODO: chapter2의 PDF View를 띄우도록 구현필요
+    @objc func touchFirstPDFButton() {
+        
+    }
+    
+    //TODO: chapter5의 PDF View를 띄우도록 구현필요
+    @objc func touchSecondPDFButton() {
+        
     }
 }
