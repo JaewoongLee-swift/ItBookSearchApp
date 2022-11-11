@@ -17,6 +17,10 @@ class SearchViewController: UIViewController {
         }
     }
     
+    var searchedText = ""
+    var totalPage: Int?
+    var currentPage: Int?
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -118,9 +122,25 @@ extension SearchViewController: UISearchBarDelegate {
         if let text = searchBar.searchTextField.text {
             if text != "" {
                 requestItBookStore(from: text)
+                searchedText = text
             }
         }
     }
+}
+
+extension SearchViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            
+            let contentOffset_y = scrollView.contentOffset.y
+            let collectionViewContentSize = collectionView.contentSize.height
+            let pagination_y = collectionViewContentSize * 0.2
+            
+            if contentOffset_y > collectionViewContentSize - pagination_y {
+                //TODO: Pagination 될 경우 데이터 호출로직 구현
+            }
+            
+        }
+        
 }
 
 extension SearchViewController {
