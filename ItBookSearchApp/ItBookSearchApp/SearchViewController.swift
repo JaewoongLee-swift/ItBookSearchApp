@@ -143,13 +143,9 @@ extension SearchViewController {
         itBookStoreManager = manager
         
         itBookStoreManager?.requestItBookStore(bookName: title) { [weak self] response in
-            print("실행은 되냐?")
             if case .success(let data) = response {
-                print("성공")
                 self?.itBookStore = data
-                print(self?.itBookStore)
             } else if case .failure(let error) = response {
-                print("에러")
                 print(error)
             }
         }
