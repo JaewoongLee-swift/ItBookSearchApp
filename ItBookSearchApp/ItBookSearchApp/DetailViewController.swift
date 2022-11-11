@@ -249,7 +249,6 @@ extension DetailViewController {
         secondPDFButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
     
-    //TODO: Unit Test 필요
     func requestItBookDetail(from isbn13: String, by manager: ItBookDetailManager = ItBookDetailManager()) {
         itBookDetailManager = manager
         

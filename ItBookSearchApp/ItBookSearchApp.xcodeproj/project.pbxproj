@@ -33,6 +33,7 @@
 		55746014291E8EF600414462 /* SwiftItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746013291E8EF600414462 /* SwiftItBookStore.json */; };
 		55746016291EBBA000414462 /* Swift2ItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746015291EBBA000414462 /* Swift2ItBookStore.json */; };
 		55746018291EBEBE00414462 /* Swift50ItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746017291EBEBE00414462 /* Swift50ItBookStore.json */; };
+		5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746019291EDBBE00414462 /* DetailViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		55746013291E8EF600414462 /* SwiftItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwiftItBookStore.json; sourceTree = "<group>"; };
 		55746015291EBBA000414462 /* Swift2ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Swift2ItBookStore.json; sourceTree = "<group>"; };
 		55746017291EBEBE00414462 /* Swift50ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Swift50ItBookStore.json; sourceTree = "<group>"; };
+		55746019291EDBBE00414462 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				55746011291E848D00414462 /* SearchViewControllerTests.swift */,
+				55746019291EDBBE00414462 /* DetailViewControllerTests.swift */,
 				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
 			path = ItBookSearchAppTests;
@@ -385,6 +388,7 @@
 				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55746012291E848D00414462 /* SearchViewControllerTests.swift in Sources */,
+				5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */,
 				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
 				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
