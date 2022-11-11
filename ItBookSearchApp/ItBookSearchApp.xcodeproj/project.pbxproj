@@ -34,6 +34,7 @@
 		55746016291EBBA000414462 /* Swift2ItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746015291EBBA000414462 /* Swift2ItBookStore.json */; };
 		55746018291EBEBE00414462 /* Swift50ItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746017291EBEBE00414462 /* Swift50ItBookStore.json */; };
 		5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746019291EDBBE00414462 /* DetailViewControllerTests.swift */; };
+		5574601C291EEA9200414462 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601B291EEA9200414462 /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		55746015291EBBA000414462 /* Swift2ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Swift2ItBookStore.json; sourceTree = "<group>"; };
 		55746017291EBEBE00414462 /* Swift50ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Swift50ItBookStore.json; sourceTree = "<group>"; };
 		55746019291EDBBE00414462 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		5574601B291EEA9200414462 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
 				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
 				55745FEA291D264100414462 /* DetailViewController.swift */,
+				5574601B291EEA9200414462 /* PDFViewController.swift */,
 				55746010291E7C6700414462 /* Network */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
@@ -373,6 +376,7 @@
 				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
 				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
+				5574601C291EEA9200414462 /* PDFViewController.swift in Sources */,
 				55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */,
 				55745FEB291D264100414462 /* DetailViewController.swift in Sources */,
 				55745F90291972AF00414462 /* SceneDelegate.swift in Sources */,

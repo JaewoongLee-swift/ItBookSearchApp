@@ -158,6 +158,8 @@ class DetailViewController: UIViewController {
         button.layer.cornerRadius = 12.0
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(self, action: #selector(touchFirstPDFButton), for: .touchUpInside)
+        
         return button
     }()
     
@@ -167,6 +169,8 @@ class DetailViewController: UIViewController {
         button.backgroundColor = .gray
         button.layer.cornerRadius = 12.0
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(touchSecondPDFButton), for: .touchUpInside)
         
         return button
     }()
@@ -299,6 +303,25 @@ extension DetailViewController {
                     self.urlLabel.text = "URL: \(bookDetail.url)"
                 }
             }
+        }
+    }
+    
+    @objc func touchFirstPDFButton() {
+        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter2)
+    }
+    
+    @objc func touchSecondPDFButton() {
+        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter5)
+    }
+    
+    func presentPDFViewController(urlString: String?) {
+        if let pdfURL = urlString {
+            let pdfViewController = PDFViewController(url: pdfURL)
+            pdfViewController.modalPresentationStyle = .automatic
+            
+            present(pdfViewController, animated: true)
+        } else {
+            print("PDF가 존재하지 않습니다.")
         }
     }
 }
