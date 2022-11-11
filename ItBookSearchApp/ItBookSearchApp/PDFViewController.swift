@@ -12,7 +12,7 @@ class PDFViewController: UIViewController {
     var url: String?
     
     private lazy var pdfView: PDFView = {
-        let pdfView = PDFView()
+        let pdfView = PDFView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         pdfView.autoScales = true
         pdfView.displayMode = .singlePageContinuous
         
@@ -31,15 +31,16 @@ class PDFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let url = URL(string: url ?? ""), let document = PDFDocument(url: url) {
-            pdfView.document = document
-        }
-    }
-    
-    private func setupLayout() {
         view.addSubview(pdfView)
         
-        pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        if let url = URL(string: self.url ?? "") {
+            DispatchQueue.global().async {
+                if let document = PDFDocument(url: url) {
+                    DispatchQueue.main.async {
+                        self.pdfView.document = document
+                    }
+                }
+            }
+        }
     }
 }
