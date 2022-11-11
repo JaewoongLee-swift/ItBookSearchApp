@@ -183,7 +183,6 @@ extension SearchViewController {
         }
     }
     
-    //TODO: Unit Test 필요
     func requestItBookStorePagination(from title: String, at page: Int, by manager: ItBookStoreManager = ItBookStoreManager()) {
         itBookStoreManager = manager
         

@@ -166,4 +166,98 @@ final class ViewController: XCTestCase {
         
         XCTAssertNil(result)
     }
+    
+    func test_requestItBookStorePagination_호출성공하면_books에_append() {
+        // given
+        let searchTitle = "swift"
+        let page = 2
+        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
+        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
+        let mockURLSession = MockURLSession.make(
+            url: url, data: data, statusCode: 200)
+        let networkManager = ItBookStoreManager(session: mockURLSession)
+        
+        //when
+        var result = 0
+        var totalCount = 0
+        let itBookCountBeforeRequest = sut.itBookStore?.books.count
+        
+        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        
+        let requestedItBookCount = sut.itBookStore?.books.count
+        result = sut.books.count
+        
+        if let beforeCount = itBookCountBeforeRequest {
+            totalCount += beforeCount
+        }
+        if let afterCount = requestedItBookCount {
+            totalCount += afterCount
+        }
+        
+        
+        XCTAssertEqual(result, totalCount)
+    }
+    
+    func test_requestItBookStorePagination_호출실패하면_books_그대로() {
+        // given
+        let searchTitle = "swift"
+        let page = 2
+        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
+        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
+        let mockURLSession = MockURLSession.make(
+            url: url, data: data, statusCode: 500)
+        let networkManager = ItBookStoreManager(session: mockURLSession)
+        
+        //when
+        var result = 0
+        let itBookCountBeforeRequest = sut.books.count
+        
+        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        
+        result = sut.books.count
+        
+        XCTAssertEqual(result, itBookCountBeforeRequest)
+    }
+    
+    func test_requestItBookStorePagination_pagination결과_없으면_itBookStore의_booksCount는_0() {
+        // given
+        let searchTitle = "swift"
+        let page = 50
+        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
+        let data: Data? = JsonLoader.data(fileName: "Swift50ItBookStore")
+        let mockURLSession = MockURLSession.make(
+            url: url, data: data, statusCode: 200)
+        let networkManager = ItBookStoreManager(session: mockURLSession)
+        
+        //when
+        var result: Int?
+        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        
+        result = sut.itBookStore?.books.count
+        
+        XCTAssertEqual(result, 0)
+    }
+    
+    func test_requestItBookStorePagination_호출실패하면_itBookStore_그대로() {
+        // given
+        let searchTitle = "swift"
+        let page = 2
+        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
+        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
+        let mockURLSession = MockURLSession.make(
+            url: url, data: data, statusCode: 500)
+        let networkManager = ItBookStoreManager(session: mockURLSession)
+        
+        //when
+        let beforeItBookStore = sut.itBookStore
+        var result: ItBookStore?
+        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        
+        result = sut.itBookStore
+        
+        XCTAssertEqual(result?.error, beforeItBookStore?.error)
+        XCTAssertEqual(result?.total, beforeItBookStore?.total)
+        XCTAssertEqual(result?.page, beforeItBookStore?.page)
+        XCTAssertEqual(result?.books.count, beforeItBookStore?.books.count)
+    }
 }
