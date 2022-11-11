@@ -306,13 +306,25 @@ extension DetailViewController {
         }
     }
     
-    //TODO: chapter2의 PDF View를 띄우도록 구현필요
     @objc func touchFirstPDFButton() {
-        
+        if let pdfURL = itBookDetail?.pdf?.chapter2 {
+            let pdfViewController = PDFViewController(url: pdfURL)
+            pdfViewController.modalPresentationStyle = .automatic
+            
+            present(pdfViewController, animated: true)
+        } else {
+            print("PDF가 존재하지 않습니다.")
+        }
     }
     
-    //TODO: chapter5의 PDF View를 띄우도록 구현필요
     @objc func touchSecondPDFButton() {
-        
+        if let pdfURL = itBookDetail?.pdf?.chapter5 {
+            let pdfViewController = PDFViewController(url: pdfURL)
+            pdfViewController.modalPresentationStyle = .automatic
+            
+            present(pdfViewController, animated: true)
+        } else {
+            print("PDF가 존재하지 않습니다.")
+        }
     }
 }
