@@ -150,6 +150,14 @@ extension SearchViewController {
         itBookStoreManager?.requestItBookStore(bookName: title) { [weak self] response in
             if case .success(let data) = response {
                 self?.itBookStore = data
+                
+                DispatchQueue.main.async {
+                    self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
+                    self?.totalLabel.text = "TotalPage : \(self?.itBookStore?.total ?? "0")"
+                    self?.pageLabel.text = "Page : \(self?.itBookStore?.page ?? "0")"
+                    self?.collectionView.reloadData()
+                }
+                
             } else if case .failure(let error) = response {
                 print(error)
             }
