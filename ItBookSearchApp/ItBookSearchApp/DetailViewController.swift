@@ -14,7 +14,6 @@ class DetailViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
