@@ -114,8 +114,12 @@ extension SearchViewController: UICollectionViewDataSource {
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        requestItBookStore(from: searchText)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.searchTextField.text {
+            if text != "" {
+                requestItBookStore(from: text)
+            }
+        }
     }
 }
 
