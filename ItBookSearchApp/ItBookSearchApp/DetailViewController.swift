@@ -307,18 +307,15 @@ extension DetailViewController {
     }
     
     @objc func touchFirstPDFButton() {
-        if let pdfURL = itBookDetail?.pdf?.chapter2 {
-            let pdfViewController = PDFViewController(url: pdfURL)
-            pdfViewController.modalPresentationStyle = .automatic
-            
-            present(pdfViewController, animated: true)
-        } else {
-            print("PDF가 존재하지 않습니다.")
-        }
+        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter2)
     }
     
     @objc func touchSecondPDFButton() {
-        if let pdfURL = itBookDetail?.pdf?.chapter5 {
+        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter5)
+    }
+    
+    func presentPDFViewController(urlString: String?) {
+        if let pdfURL = urlString {
             let pdfViewController = PDFViewController(url: pdfURL)
             pdfViewController.modalPresentationStyle = .automatic
             
