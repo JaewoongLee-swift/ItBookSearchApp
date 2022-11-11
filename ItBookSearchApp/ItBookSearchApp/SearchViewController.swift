@@ -167,11 +167,13 @@ extension SearchViewController {
             if case .success(let data) = response {
                 self?.itBookStore = data
                 self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
+                self?.totalPage = Int(self?.itBookStore?.total ?? "0")
+                self?.currentPage = Int(self?.itBookStore?.page ?? "0")
                 
                 DispatchQueue.main.async {
                     self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
-                    self?.totalLabel.text = "TotalPage : \(self?.itBookStore?.total ?? "0")"
-                    self?.pageLabel.text = "Page : \(self?.itBookStore?.page ?? "0")"
+                    self?.totalLabel.text = "TotalPage : \(self?.totalPage ?? 0)"
+                    self?.pageLabel.text = "Page : \(self?.currentPage ?? 0)"
                     self?.collectionView.reloadData()
                 }
                 
