@@ -11,7 +11,6 @@
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
 		55745F9A291972B000414462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55745F98291972B000414462 /* LaunchScreen.storyboard */; };
-		55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FA4291972B000414462 /* ItBookSearchAppTests.swift */; };
 		55745FAF291972B000414462 /* ItBookSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */; };
 		55745FB1291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */; };
 		55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FBD29197D9E00414462 /* ItBookStore.swift */; };
@@ -59,7 +58,6 @@
 		55745F99291972B000414462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55745F9B291972B000414462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55745FA0291972B000414462 /* ItBookSearchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItBookSearchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		55745FA4291972B000414462 /* ItBookSearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppTests.swift; sourceTree = "<group>"; };
 		55745FAA291972B000414462 /* ItBookSearchAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItBookSearchAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745FAE291972B000414462 /* ItBookSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITests.swift; sourceTree = "<group>"; };
 		55745FB0291972B000414462 /* ItBookSearchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookSearchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 		55745FA3291972B000414462 /* ItBookSearchAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				55745FA4291972B000414462 /* ItBookSearchAppTests.swift */,
 				55746011291E848D00414462 /* ViewControllerTests.swift */,
 				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
@@ -379,7 +376,6 @@
 				55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */,
 				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
-				55745FA5291972B000414462 /* ItBookSearchAppTests.swift in Sources */,
 				55746012291E848D00414462 /* ViewControllerTests.swift in Sources */,
 				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
 				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
