@@ -8,7 +8,7 @@
 import Foundation
 @testable import ItBookSearchApp
 
-class MockURLSessionDataTask: URLSessionDataTask {
+class MockURLSessionDataTask: URLSessionDataTaskProtocol {
     private let resumeHandler: () -> Void
     
     init(resumeHandler: @escaping () -> Void) {
@@ -16,7 +16,7 @@ class MockURLSessionDataTask: URLSessionDataTask {
     }
     
     //실제 네트워크 요청이 아닌 단순 completionHandler 호출용
-    override func resume() {
+    func resume() {
         resumeHandler()
     }
 }
