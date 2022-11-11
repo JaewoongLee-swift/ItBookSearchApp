@@ -8,7 +8,7 @@
 import XCTest
 @testable import ItBookSearchApp
 
-final class SearchViewController: XCTestCase {
+final class SearchViewControllerTest: XCTestCase {
     var sut: SearchViewController!
 
     override func setUpWithError() throws {
