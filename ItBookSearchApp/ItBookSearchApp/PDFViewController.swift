@@ -31,6 +31,9 @@ class PDFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let url = URL(string: url), let document = PDFDocument(url: url) {
+            pdfView?.document = document
+        }
     }
 }
