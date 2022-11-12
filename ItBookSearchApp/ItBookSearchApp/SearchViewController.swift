@@ -118,6 +118,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.searchTextField.text {
             if text != "" {
+                books = []
                 requestItBookStore(from: text)
                 searchedText = text
             }
