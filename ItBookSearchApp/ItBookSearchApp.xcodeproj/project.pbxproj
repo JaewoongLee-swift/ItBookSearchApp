@@ -142,15 +142,10 @@
 		55745F8C291972AF00414462 /* ItBookSearchApp */ = {
 			isa = PBXGroup;
 			children = (
-				55745F8D291972AF00414462 /* AppDelegate.swift */,
-				55745F8F291972AF00414462 /* SceneDelegate.swift */,
-				55745FBD29197D9E00414462 /* ItBookStore.swift */,
-				5574601D291F83DB00414462 /* ImageCache.swift */,
-				55746026291FCA9900414462 /* URLUIImageView.swift */,
-				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
-				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
-				55745FEA291D264100414462 /* DetailViewController.swift */,
-				5574601B291EEA9200414462 /* PDFViewController.swift */,
+				5574602C291FE21100414462 /* Application */,
+				5574602A291FE1CD00414462 /* Model */,
+				5574602B291FE1EE00414462 /* Utilites */,
+				55746028291FE18E00414462 /* Scenes */,
 				55746010291E7C6700414462 /* Network */,
 				55745F96291972B000414462 /* Assets.xcassets */,
 				55745F98291972B000414462 /* LaunchScreen.storyboard */,
@@ -238,6 +233,51 @@
 				55745FF2291D401900414462 /* URLSessionProtocol.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		55746028291FE18E00414462 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
+				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
+				55745FEA291D264100414462 /* DetailViewController.swift */,
+				5574601B291EEA9200414462 /* PDFViewController.swift */,
+				55746029291FE1C600414462 /* Reusable */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		55746029291FE1C600414462 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				55746026291FCA9900414462 /* URLUIImageView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		5574602A291FE1CD00414462 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55745FBD29197D9E00414462 /* ItBookStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5574602B291FE1EE00414462 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				5574601D291F83DB00414462 /* ImageCache.swift */,
+			);
+			path = Utilites;
+			sourceTree = "<group>";
+		};
+		5574602C291FE21100414462 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				55745F8D291972AF00414462 /* AppDelegate.swift */,
+				55745F8F291972AF00414462 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
