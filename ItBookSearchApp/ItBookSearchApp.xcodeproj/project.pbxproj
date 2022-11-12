@@ -36,6 +36,7 @@
 		5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746019291EDBBE00414462 /* DetailViewControllerTests.swift */; };
 		5574601C291EEA9200414462 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601B291EEA9200414462 /* PDFViewController.swift */; };
 		5574601E291F83DB00414462 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601D291F83DB00414462 /* ImageCache.swift */; };
+		55746020291F857200414462 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601F291F857200414462 /* UIImageView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		55746019291EDBBE00414462 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		5574601B291EEA9200414462 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		5574601D291F83DB00414462 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5574601F291F857200414462 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				55745F8F291972AF00414462 /* SceneDelegate.swift */,
 				55745FBD29197D9E00414462 /* ItBookStore.swift */,
 				5574601D291F83DB00414462 /* ImageCache.swift */,
+				5574601F291F857200414462 /* UIImageView+.swift */,
 				55745FC7291BFA9F00414462 /* SearchViewController.swift */,
 				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
 				55745FEA291D264100414462 /* DetailViewController.swift */,
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55746020291F857200414462 /* UIImageView+.swift in Sources */,
 				5574601E291F83DB00414462 /* ImageCache.swift in Sources */,
 				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
