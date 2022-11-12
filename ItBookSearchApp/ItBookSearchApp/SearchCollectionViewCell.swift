@@ -60,6 +60,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
         
         return imageView
     }()
+    
+    override func prepareForReuse() {
+        imageView.image = UIImage()
+    }
 }
 
 extension SearchCollectionViewCell {
