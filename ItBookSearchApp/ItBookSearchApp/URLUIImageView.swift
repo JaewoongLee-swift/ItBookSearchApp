@@ -65,4 +65,8 @@ class URLUIImageView: UIImageView {
         }
     }
     
+    func cancelLoadingImage() {
+        dataTask?.cancel()
+        dataTask = nil
+    }
 }
