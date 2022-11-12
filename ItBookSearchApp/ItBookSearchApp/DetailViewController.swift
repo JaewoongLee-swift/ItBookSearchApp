@@ -278,15 +278,7 @@ extension DetailViewController {
                 self.itBookDetail = data
                 guard let bookDetail = self.itBookDetail else { return }
                 
-                if let url = URL(string: bookDetail.imageURL) {
-                    DispatchQueue.global().async {
-                        if let imageData = try? Data(contentsOf: url) {
-                            DispatchQueue.main.async {
-                                self.imageView.image = UIImage(data: imageData)
-                            }
-                        }
-                    }
-                }
+                self.imageView.setImage(url: bookDetail.imageURL)
                 
                 DispatchQueue.main.async {
                     self.titleLabel.text = "Title: \(bookDetail.title)"
