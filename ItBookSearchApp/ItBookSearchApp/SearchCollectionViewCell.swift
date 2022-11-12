@@ -70,15 +70,7 @@ extension SearchCollectionViewCell {
         priceLabel.text = book.price
         urlLabel.text = book.url
         
-        if let url = URL(string: book.imageURL) {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        self.imageView.image = UIImage(data: data)
-                    }
-                }
-            }
-        }
+        imageView.setImage(url: book.imageURL)
         
         setupLayout()
     }
