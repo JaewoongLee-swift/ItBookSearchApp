@@ -1,5 +1,5 @@
 //
-//  UIImageView+.swift
+//  URLUIImageView.swift
 //  ItBookSearchApp
 //
 //  Created by 이재웅 on 2022/11/12.
@@ -7,8 +7,9 @@
 
 import UIKit
 
-extension UIImageView {
-    //TODO: Unit Test 필요
+class URLUIImageView: UIImageView {
+    var dataTask: URLSessionDataTask?
+    
     func setImage(url: String) {
         DispatchQueue.global(qos: .background).async {
             let cachedKey = NSString(string: url).lastPathComponent
@@ -44,7 +45,7 @@ extension UIImageView {
             
             guard let url = URL(string: url) else { return }
             
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            self.dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil else {
                     DispatchQueue.main.async {
                         self.image = UIImage()
@@ -59,7 +60,13 @@ extension UIImageView {
                         self.image = image
                     }
                 }
-            }.resume()
+            }
+            self.dataTask?.resume()
         }
+    }
+    
+    func cancelLoadingImage() {
+        dataTask?.cancel()
+        dataTask = nil
     }
 }

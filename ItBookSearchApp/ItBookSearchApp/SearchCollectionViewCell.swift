@@ -54,12 +54,17 @@ class SearchCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var imageView: URLUIImageView = {
+        let imageView = URLUIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
+    
+    override func prepareForReuse() {
+        imageView.image = UIImage()
+        imageView.cancelLoadingImage()
+    }
 }
 
 extension SearchCollectionViewCell {
