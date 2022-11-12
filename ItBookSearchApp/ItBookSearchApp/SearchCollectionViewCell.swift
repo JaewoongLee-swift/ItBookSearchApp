@@ -63,6 +63,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         imageView.image = UIImage()
+        imageView.cancelLoadingImage()
     }
 }
 
