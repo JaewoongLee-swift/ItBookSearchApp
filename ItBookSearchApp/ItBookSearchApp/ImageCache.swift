@@ -9,6 +9,9 @@ import UIKit
 
 class ImageCacheManager {
     static let shared = NSCache<NSString, UIImage>()
+    static func configureCachePolicy(with maximumBytes: Int) {
+        self.shared.totalCostLimit = maximumBytes
+    }
     
     private init() { }
 }

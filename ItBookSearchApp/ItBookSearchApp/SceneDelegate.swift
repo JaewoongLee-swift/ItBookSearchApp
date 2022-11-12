@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window?.rootViewController = UINavigationController(rootViewController: SearchViewController())
         self.window?.makeKeyAndVisible()
+        
+        ImageCacheManager.configureCachePolicy(with: 52428800)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
