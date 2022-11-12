@@ -170,7 +170,7 @@ extension SearchViewController {
         
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "도서명을 검색해주세요."
-        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
