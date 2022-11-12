@@ -12,8 +12,8 @@ class DetailViewController: UIViewController {
     var itBookDetailManager: ItBookDetailManager?
     var itBookDetail: ItBookDetail?
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var imageView: URLUIImageView = {
+        let imageView = URLUIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
