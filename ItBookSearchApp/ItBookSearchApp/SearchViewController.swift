@@ -119,6 +119,8 @@ extension SearchViewController: UISearchBarDelegate {
         if let text = searchBar.searchTextField.text {
             if text != "" {
                 books = []
+                collectionView.reloadData()
+                collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
                 requestItBookStore(from: text)
                 searchedText = text
             }
