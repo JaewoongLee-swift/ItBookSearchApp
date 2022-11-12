@@ -57,6 +57,7 @@ class URLUIImageView: UIImageView {
                 DispatchQueue.main.async {
                     if let data = data, let image = UIImage(data: data) {
                         ImageCacheManager.shared.setObject(image, forKey: cachedKey as NSString, cost: data.count)
+                        fileManager.createFile(atPath: filePath.path, contents: image.jpegData(compressionQuality: 1.0), attributes: nil)
                         self.image = image
                     }
                 }
