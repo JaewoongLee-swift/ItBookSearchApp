@@ -12,7 +12,7 @@ final class DetailViewControllerTests: XCTestCase {
     var sut: DetailViewController!
 
     override func setUpWithError() throws {
-        self.sut = DetailViewController()
+        self.sut = DetailViewController(isbn13: "9781491985571")
     }
 
     override func tearDownWithError() throws {
