@@ -40,6 +40,8 @@ class URLUIImageView: UIImageView {
                     self.image = cachedImage
                     ImageCacheManager.shared.setObject(cachedImage, forKey: cachedKey as NSString)
                 }
+                
+                return
             }
 
             
