@@ -94,7 +94,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController(isbn13: books[indexPath.row].isbn13)
+        let detailViewController = DetailViewController(isbn13: books[indexPath.row].getISBN13())
         
         navigationController?.pushViewController(detailViewController, animated: true)
     }
