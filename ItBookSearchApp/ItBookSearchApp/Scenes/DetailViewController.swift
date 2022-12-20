@@ -278,32 +278,32 @@ extension DetailViewController {
                 self.itBookDetail = data
                 guard let bookDetail = self.itBookDetail else { return }
                 
-                self.imageView.setImage(url: bookDetail.imageURL)
+                self.imageView.setImage(url: bookDetail.getImageURL())
                 
                 DispatchQueue.main.async {
-                    self.titleLabel.text = "Title: \(bookDetail.title)"
-                    self.subtitleLabel.text = "Subtitle: \(bookDetail.subtitle)"
-                    self.authorLabel.text = "Author: \(bookDetail.authors)"
-                    self.publisherLabel.text = "Publisher: \(bookDetail.authors)"
-                    self.isbn10Label.text = "ISBN10: \(bookDetail.isbn10)"
-                    self.isbn13Label.text = "ISBN13: \(bookDetail.isbn13)"
-                    self.pageLabel.text = "Page: \(bookDetail.pages)"
-                    self.yearLabel.text = "Year: \(bookDetail.year)"
-                    self.ratingLabel.text = "Rating: \(bookDetail.rating)"
-                    self.descriptionLabel.text = "Description: \(bookDetail.desc)"
-                    self.priceLabel.text = "Price: $\(bookDetail.price)"
-                    self.urlLabel.text = "URL: \(bookDetail.url)"
+                    self.titleLabel.text = "Title: \(bookDetail.getTitle())"
+                    self.subtitleLabel.text = "Subtitle: \(bookDetail.getSubtitle())"
+                    self.authorLabel.text = "Author: \(bookDetail.getAuthors())"
+                    self.publisherLabel.text = "Publisher: \(bookDetail.getPublisher())"
+                    self.isbn10Label.text = "ISBN10: \(bookDetail.getISBN10())"
+                    self.isbn13Label.text = "ISBN13: \(bookDetail.getISBN13())"
+                    self.pageLabel.text = "Page: \(bookDetail.getPages())"
+                    self.yearLabel.text = "Year: \(bookDetail.getYear())"
+                    self.ratingLabel.text = "Rating: \(bookDetail.getRating())"
+                    self.descriptionLabel.text = "Description: \(bookDetail.getDescription())"
+                    self.priceLabel.text = "Price: $\(bookDetail.getPrice())"
+                    self.urlLabel.text = "URL: \(bookDetail.getURL())"
                 }
             }
         }
     }
     
     @objc func touchFirstPDFButton() {
-        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter2)
+        presentPDFViewController(urlString: itBookDetail?.getPDFs()?.chapter2)
     }
     
     @objc func touchSecondPDFButton() {
-        presentPDFViewController(urlString: itBookDetail?.pdf?.chapter5)
+        presentPDFViewController(urlString: itBookDetail?.getPDFs()?.chapter5)
     }
     
     func presentPDFViewController(urlString: String?) {

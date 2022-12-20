@@ -69,13 +69,13 @@ class SearchCollectionViewCell: UICollectionViewCell {
 
 extension SearchCollectionViewCell {
     func configure(_ book: ItBook) {
-        titleLabel.text = book.title
-        subtitleLabel.text = book.subtitle
-        isbn13Label.text = book.isbn13
-        priceLabel.text = book.price
-        urlLabel.text = book.url
+        titleLabel.text = book.getTitle()
+        subtitleLabel.text = book.getSubTitle()
+        isbn13Label.text = book.getISBN13()
+        priceLabel.text = book.getPrice()
+        urlLabel.text = book.getURL()
         
-        imageView.setImage(url: book.imageURL)
+        imageView.setImage(url: book.getImageURL())
         
         setupLayout()
     }

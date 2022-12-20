@@ -30,12 +30,36 @@ struct ItBookStore: Decodable {
 }
 
 struct ItBook: Decodable {
-    let title: String
-    let subtitle: String
-    let isbn13: String
-    let price: String
-    let imageURL: String
-    let url: String
+    private let title: String
+    private let subtitle: String
+    private let isbn13: String
+    private let price: String
+    private let imageURL: String
+    private let url: String
+    
+    func getTitle() -> String {
+        return title
+    }
+    
+    func getSubTitle() -> String {
+        return subtitle
+    }
+    
+    func getISBN13() -> String {
+        return isbn13
+    }
+    
+    func getPrice() -> String {
+        return price
+    }
+    
+    func getImageURL() -> String {
+        return imageURL
+    }
+    
+    func getURL() -> String {
+        return url
+    }
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -58,22 +82,86 @@ struct ItBook: Decodable {
 }
 
 struct ItBookDetail: Decodable {
-    let error: String
-    let title: String
-    let subtitle: String
-    let authors: String
-    let publisher: String
-    let language: String
-    let isbn10: String
-    let isbn13: String
-    let pages: String
-    let year: String
-    let rating: String
-    let desc: String
-    let price: String
-    let imageURL: String
-    let url: String
-    let pdf: ItBookPDF?
+    private let error: String
+    private let title: String
+    private let subtitle: String
+    private let authors: String
+    private let publisher: String
+    private let language: String
+    private let isbn10: String
+    private let isbn13: String
+    private let pages: String
+    private let year: String
+    private let rating: String
+    private let desc: String
+    private let price: String
+    private let imageURL: String
+    private let url: String
+    private let pdf: ItBookPDF?
+    
+    func getErrorCode() -> String {
+        return error
+    }
+    
+    func getTitle() -> String {
+        return title
+    }
+    
+    func getSubtitle() -> String {
+        return subtitle
+    }
+    
+    func getAuthors() -> String {
+        return authors
+    }
+    
+    func getPublisher() -> String {
+        return publisher
+    }
+    
+    func getLangauge() -> String {
+        return language
+    }
+    
+    func getISBN10() -> String {
+        return isbn10
+    }
+    
+    func getISBN13() -> String {
+        return isbn13
+    }
+    
+    func getPages() -> String {
+        return pages
+    }
+    
+    func getYear() -> String {
+        return year
+    }
+    
+    func getRating() -> String {
+        return rating
+    }
+    
+    func getDescription() -> String {
+        return desc
+    }
+    
+    func getPrice() -> String {
+        return price
+    }
+    
+    func getImageURL() -> String {
+        return imageURL
+    }
+    
+    func getURL() -> String {
+        return url
+    }
+    
+    func getPDFs() -> ItBookPDF? {
+        return pdf
+    }
     
     enum CodingKeys: String, CodingKey {
         case error
