@@ -30,12 +30,36 @@ struct ItBookStore: Decodable {
 }
 
 struct ItBook: Decodable {
-    let title: String
-    let subtitle: String
-    let isbn13: String
-    let price: String
-    let imageURL: String
-    let url: String
+    private let title: String
+    private let subtitle: String
+    private let isbn13: String
+    private let price: String
+    private let imageURL: String
+    private let url: String
+    
+    func getTitle() -> String {
+        return title
+    }
+    
+    func getSubTitle() -> String {
+        return subtitle
+    }
+    
+    func getISBN13() -> String {
+        return isbn13
+    }
+    
+    func getPrice() -> String {
+        return price
+    }
+    
+    func getImageURL() -> String {
+        return imageURL
+    }
+    
+    func getURL() -> String {
+        return url
+    }
     
     enum CodingKeys: String, CodingKey {
         case title
