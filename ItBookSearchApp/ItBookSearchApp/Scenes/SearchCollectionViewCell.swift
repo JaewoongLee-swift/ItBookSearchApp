@@ -75,7 +75,7 @@ extension SearchCollectionViewCell {
         priceLabel.text = book.getPrice()
         urlLabel.text = book.getURL()
         
-        imageView.setImage(url: book.getImageURL())
+        imageView.setImage(urlString: book.getImageURL())
         
         setupLayout()
     }

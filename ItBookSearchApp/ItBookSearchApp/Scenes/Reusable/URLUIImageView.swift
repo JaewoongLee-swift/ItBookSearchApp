@@ -10,11 +10,9 @@ import UIKit
 class URLUIImageView: UIImageView {
     var dataTask: URLSessionDataTask?
     
-    func setImage(url: String) {
+    func setImage(urlString: String) {
         DispatchQueue.global(qos: .background).async {
-            let cachedKey = NSString(string: url).lastPathComponent
-            
-            if let cachedImage = ImageCacheManager.shared.object(forKey: cachedKey as NSString) {
+            if let cachedImage = ImageCacheManager.shared.cachedImage(urlString: urlString) {
                 DispatchQueue.main.async {
                     self.image = cachedImage
                 }
@@ -22,7 +20,7 @@ class URLUIImageView: UIImageView {
             }
             
             guard let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first else { return }
-            let filePath = URL(fileURLWithPath: path).appendingPathComponent(cachedKey)
+            let filePath = URL(fileURLWithPath: path).appendingPathComponent(urlString)
             let fileManager = FileManager()
             
             if fileManager.fileExists(atPath: filePath.path) {
@@ -38,14 +36,15 @@ class URLUIImageView: UIImageView {
                 
                 DispatchQueue.main.async {
                     self.image = cachedImage
-                    ImageCacheManager.shared.setObject(cachedImage, forKey: cachedKey as NSString)
+                    
+                    ImageCacheManager.shared.setObject(image: cachedImage, urlString: urlString)
                 }
                 
                 return
             }
 
             
-            guard let url = URL(string: url) else { return }
+            guard let url = URL(string: urlString) else { return }
             
             self.dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard error == nil else {
@@ -58,7 +57,7 @@ class URLUIImageView: UIImageView {
                 
                 DispatchQueue.main.async {
                     if let data = data, let image = UIImage(data: data) {
-                        ImageCacheManager.shared.setObject(image, forKey: cachedKey as NSString, cost: data.count)
+                        ImageCacheManager.shared.setObject(image: image, urlString: urlString)
                         fileManager.createFile(atPath: filePath.path, contents: image.jpegData(compressionQuality: 1.0), attributes: nil)
                         self.image = image
                     }
