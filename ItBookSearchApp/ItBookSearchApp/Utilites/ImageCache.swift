@@ -12,11 +12,14 @@ class ImageCacheManager {
     
     private let storage = NSCache<NSString, UIImage>()
     
-    private init() { }
-    
-    static func configureCachePolicy(with maximumBytes: Int) {
-        self.shared.storage.totalCostLimit = maximumBytes
+    private init() {
+        storage.totalCostLimit = 52428800
     }
+    
+    //cache비용제한 정책메소드를 init으로 결정하도록 변경
+//    static func configureCachePolicy(with maximumBytes: Int) {
+//        self.shared.storage.totalCostLimit = maximumBytes
+//    }
     
     func cachedImage(urlString: String) -> UIImage? {
         let cachedKey = NSString(string: urlString)
