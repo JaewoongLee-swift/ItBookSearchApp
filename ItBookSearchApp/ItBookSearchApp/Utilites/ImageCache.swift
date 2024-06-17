@@ -7,32 +7,31 @@
 
 import UIKit
 
-class ImageCacheManager {
+protocol ImageCacheable {
+    func cachedImage(urlString: String) -> UIImage?
+    func setObject(image: UIImage, urlString: String)
+}
+
+class ImageCacheManager: ImageCacheable {
+    /// 기본 maximumByte : 100mb
     static let shared = ImageCacheManager()
     
-    private let storage = NSCache<NSString, UIImage>()
+    private let storage: NSCache<NSString, UIImage>
     
-    private init() {
-        storage.totalCostLimit = 52428800
+    private init(maximumBytes: Int = 104857600) {
+        self.storage = NSCache<NSString, UIImage>()
+        self.storage.totalCostLimit = maximumBytes
     }
-    
-    //cache비용제한 정책메소드를 init으로 결정하도록 변경
-//    static func configureCachePolicy(with maximumBytes: Int) {
-//        self.shared.storage.totalCostLimit = maximumBytes
-//    }
     
     func cachedImage(urlString: String) -> UIImage? {
         let cachedKey = NSString(string: urlString)
         
-        if let cachedImage = storage.object(forKey: cachedKey) {
-            return cachedImage
-        }
-        
-        return nil
+        return self.storage.object(forKey: cachedKey)
     }
     
     func setObject(image: UIImage, urlString: String) {
         let forKey = NSString(string: urlString)
+        
         self.storage.setObject(image, forKey: forKey)
     }
 }

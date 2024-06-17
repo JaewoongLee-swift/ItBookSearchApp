@@ -8,11 +8,13 @@
 import UIKit
 
 class URLUIImageView: UIImageView {
+    private let imageCacheManager = ImageCacheManager.shared
+    
     var dataTask: URLSessionDataTask?
     
     func setImage(urlString: String) {
         DispatchQueue.global(qos: .background).async {
-            if let cachedImage = ImageCacheManager.shared.cachedImage(urlString: urlString) {
+            if let cachedImage = self.imageCacheManager.cachedImage(urlString: urlString) {
                 DispatchQueue.main.async {
                     self.image = cachedImage
                 }
@@ -37,7 +39,7 @@ class URLUIImageView: UIImageView {
                 DispatchQueue.main.async {
                     self.image = cachedImage
                     
-                    ImageCacheManager.shared.setObject(image: cachedImage, urlString: urlString)
+                    self.imageCacheManager.setObject(image: cachedImage, urlString: urlString)
                 }
                 
                 return
