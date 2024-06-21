@@ -8,69 +8,18 @@
 import UIKit
 
 class URLUIImageView: UIImageView {
-    private let imageCacheManager = ImageCacheManager.shared
-    
-    var dataTask: URLSessionDataTask?
+    var imageFetchTask: CancellableTask?
     
     func setImage(urlString: String) {
-        DispatchQueue.global(qos: .background).async {
-            if let cachedImage = self.imageCacheManager.cachedImage(urlString: urlString) {
-                DispatchQueue.main.async {
-                    self.image = cachedImage
-                }
-                return
-            }
+        self.imageFetchTask = ImageFetcher.shared.fetchImage(from: urlString) { [weak self] image in
+            guard let self else { return }
             
-            guard let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first else { return }
-            let filePath = URL(fileURLWithPath: path).appendingPathComponent(urlString)
-            let fileManager = FileManager()
-            
-            if fileManager.fileExists(atPath: filePath.path) {
-                guard let imageData = try? Data(contentsOf: filePath) else {
-                    print("Disk Cache의 image data가 없습니다.")
-                    return
-                }
-                
-                guard let cachedImage = UIImage(data: imageData) else {
-                    print("Disk Cache의 image data가 없습니다.")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.image = cachedImage
-                    
-                    self.imageCacheManager.setObject(image: cachedImage, urlString: urlString)
-                }
-                
-                return
-            }
-
-            
-            guard let url = URL(string: urlString) else { return }
-            
-            self.dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard error == nil else {
-                    DispatchQueue.main.async {
-                        self.image = UIImage()
-                    }
-                    
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    if let data = data, let image = UIImage(data: data) {
-                        ImageCacheManager.shared.setObject(image: image, urlString: urlString)
-                        fileManager.createFile(atPath: filePath.path, contents: image.jpegData(compressionQuality: 1.0), attributes: nil)
-                        self.image = image
-                    }
-                }
-            }
-            self.dataTask?.resume()
+            self.image = image
         }
     }
     
     func cancelLoadingImage() {
-        dataTask?.cancel()
-        dataTask = nil
+        imageFetchTask?.cancel()
+        imageFetchTask = nil
     }
 }

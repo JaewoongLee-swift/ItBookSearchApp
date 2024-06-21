@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageFetcher {
-    static let shared = ImageFetcher(memoryCacheManager: ImageCacheManager.shared, diskCacheManager: DiskCacheManager.init())
+    static let shared = ImageFetcher(memoryCacheManager: ImageCacheManager.shared, diskCacheManager: DiskCacheManager.shared)
     
     private let memoryCacheManager: ImageCacheable
     private let diskCacheManager: DiskCacheable
@@ -35,7 +35,6 @@ class ImageFetcher {
             completion(diskCachedImage)
             return nil
         }
-        
         
         return fetchImageFromSession(urlString: urlString, completion: completion)
     }
