@@ -1,5 +1,5 @@
 //
-//  DiskCache.swift
+//  ImageDiskCacheManager.swift
 //  ItBookSearchApp
 //
 //  Created by Jaewoong Lee on 6/17/24.
@@ -7,20 +7,13 @@
 
 import UIKit
 
-protocol DiskCacheable {
-    func cachedImage(urlString: String) -> UIImage?
-    func saveImage(_ image: UIImage, forKey key: String)
-}
-
-class DiskCacheManager: DiskCacheable {
-    /// 기본 maximumByte : 100mb
-    static let shared = DiskCacheManager()
-    
+class ImageDiskCacheManager: ImageCacheable {
     private let fileManager = FileManager.default
     private let cacheDirectory: URL
     private let maximumByte: UInt64
     
-    private init(maximumByte: UInt64 = 100 * 1024 * 1024) {
+    /// 기본 maximumByte : 100mb
+    init(maximumByte: UInt64 = 100 * 1024 * 1024) {
         let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         cacheDirectory = paths[0].appendingPathExtension("ImageCache")
         
@@ -31,8 +24,8 @@ class DiskCacheManager: DiskCacheable {
         self.maximumByte = maximumByte
     }
     
-    func cachedImage(urlString: String) -> UIImage? {
-        let filePath = self.filePath(forKey: urlString)
+    func cachedImage(forKey key: String) -> UIImage? {
+        let filePath = self.filePath(forKey: key)
         
         if let data = try? Data(contentsOf: filePath),
            let image = UIImage(data: data) {
@@ -42,7 +35,7 @@ class DiskCacheManager: DiskCacheable {
         }
     }
     
-    func saveImage(_ image: UIImage, forKey key: String) {
+    func setObject(_ image: UIImage, forKey key: String) {
         let filePath = self.filePath(forKey: key)
         if let data = image.jpegData(compressionQuality: 1.0) {
             try? data.write(to: filePath)
@@ -55,7 +48,7 @@ class DiskCacheManager: DiskCacheable {
         return cacheDirectory.appending(path: safeKey)
     }
     
-    /// LRU 알고리즘을 활용한 디스크 캐싱 함수
+    /// TTL 알고리즘을 활용한 디스크 캐싱 함수
     private func cleanUpDiskIfNeeded() {
         let urlProperties: [URLResourceKey] = [.isDirectoryKey, .contentModificationDateKey, .totalFileAllocatedSizeKey]
         

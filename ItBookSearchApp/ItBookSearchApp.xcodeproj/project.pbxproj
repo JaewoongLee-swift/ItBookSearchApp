@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0620792F2C204D7D000CB436 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0620792E2C204D7D000CB436 /* DiskCache.swift */; };
-		062079332C21A5FD000CB436 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079322C21A5FD000CB436 /* ImageFetcher.swift */; };
+		0620792F2C204D7D000CB436 /* ImageDiskCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */; };
+		062079332C21A5FD000CB436 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079322C21A5FD000CB436 /* ImageCacheManager.swift */; };
 		062079352C23B3EB000CB436 /* CancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079342C23B3EB000CB436 /* CancellableTask.swift */; };
+		062079372C25826E000CB436 /* ImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079362C25826E000CB436 /* ImageCacheable.swift */; };
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
@@ -38,8 +39,7 @@
 		55746018291EBEBE00414462 /* Swift50ItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746017291EBEBE00414462 /* Swift50ItBookStore.json */; };
 		5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746019291EDBBE00414462 /* DetailViewControllerTests.swift */; };
 		5574601C291EEA9200414462 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601B291EEA9200414462 /* PDFViewController.swift */; };
-		5574601E291F83DB00414462 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601D291F83DB00414462 /* ImageCache.swift */; };
-		55746027291FCA9900414462 /* URLUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55746026291FCA9900414462 /* URLUIImageView.swift */; };
+		5574601E291F83DB00414462 /* ImageMemoryCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574601D291F83DB00414462 /* ImageMemoryCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0620792E2C204D7D000CB436 /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
-		062079322C21A5FD000CB436 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDiskCacheManager.swift; sourceTree = "<group>"; };
+		062079322C21A5FD000CB436 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		062079342C23B3EB000CB436 /* CancellableTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTask.swift; sourceTree = "<group>"; };
+		062079362C25826E000CB436 /* ImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheable.swift; sourceTree = "<group>"; };
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,8 +97,7 @@
 		55746017291EBEBE00414462 /* Swift50ItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Swift50ItBookStore.json; sourceTree = "<group>"; };
 		55746019291EDBBE00414462 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		5574601B291EEA9200414462 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
-		5574601D291F83DB00414462 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		55746026291FCA9900414462 /* URLUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUIImageView.swift; sourceTree = "<group>"; };
+		5574601D291F83DB00414462 /* ImageMemoryCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMemoryCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,17 +249,8 @@
 				55745FC9291C01EF00414462 /* SearchCollectionViewCell.swift */,
 				55745FEA291D264100414462 /* DetailViewController.swift */,
 				5574601B291EEA9200414462 /* PDFViewController.swift */,
-				55746029291FE1C600414462 /* Reusable */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		55746029291FE1C600414462 /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				55746026291FCA9900414462 /* URLUIImageView.swift */,
-			);
-			path = Reusable;
 			sourceTree = "<group>";
 		};
 		5574602A291FE1CD00414462 /* Model */ = {
@@ -273,9 +264,10 @@
 		5574602B291FE1EE00414462 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
-				5574601D291F83DB00414462 /* ImageCache.swift */,
-				0620792E2C204D7D000CB436 /* DiskCache.swift */,
-				062079322C21A5FD000CB436 /* ImageFetcher.swift */,
+				062079362C25826E000CB436 /* ImageCacheable.swift */,
+				5574601D291F83DB00414462 /* ImageMemoryCacheManager.swift */,
+				0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */,
+				062079322C21A5FD000CB436 /* ImageCacheManager.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -427,19 +419,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				062079352C23B3EB000CB436 /* CancellableTask.swift in Sources */,
-				5574601E291F83DB00414462 /* ImageCache.swift in Sources */,
+				5574601E291F83DB00414462 /* ImageMemoryCacheManager.swift in Sources */,
 				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
 				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
 				5574601C291EEA9200414462 /* PDFViewController.swift in Sources */,
-				0620792F2C204D7D000CB436 /* DiskCache.swift in Sources */,
+				0620792F2C204D7D000CB436 /* ImageDiskCacheManager.swift in Sources */,
 				55745FC8291BFA9F00414462 /* SearchViewController.swift in Sources */,
+				062079372C25826E000CB436 /* ImageCacheable.swift in Sources */,
 				55745FEB291D264100414462 /* DetailViewController.swift in Sources */,
 				55745F90291972AF00414462 /* SceneDelegate.swift in Sources */,
-				062079332C21A5FD000CB436 /* ImageFetcher.swift in Sources */,
-				55746027291FCA9900414462 /* URLUIImageView.swift in Sources */,
+				062079332C21A5FD000CB436 /* ImageCacheManager.swift in Sources */,
 				55745FCA291C01EF00414462 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

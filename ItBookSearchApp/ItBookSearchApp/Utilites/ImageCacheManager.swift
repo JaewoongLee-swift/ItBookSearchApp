@@ -1,5 +1,5 @@
 //
-//  ImageFetcher.swift
+//  ImageCacheManager.swift
 //  ItBookSearchApp
 //
 //  Created by Jaewoong Lee on 6/18/24.
@@ -7,16 +7,14 @@
 
 import UIKit
 
-class ImageFetcher {
-    static let shared = ImageFetcher(memoryCacheManager: ImageCacheManager.shared, diskCacheManager: DiskCacheManager.shared)
-    
+class ImageCacheManager {
     private let memoryCacheManager: ImageCacheable
-    private let diskCacheManager: DiskCacheable
+    private let diskCacheManager: ImageCacheable
     private let session: URLSessionProtocol
     
-    private init(
+    init(
         memoryCacheManager: ImageCacheable,
-        diskCacheManager: DiskCacheable,
+        diskCacheManager: ImageCacheable,
         session: URLSessionProtocol = URLSession.shared
     ) {
         self.memoryCacheManager = memoryCacheManager
@@ -25,13 +23,13 @@ class ImageFetcher {
     }
     
     func fetchImage(from urlString: String, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTaskProtocol? {
-        if let memoryCachedImage = memoryCacheManager.cachedImage(urlString: urlString) {
+        if let memoryCachedImage = memoryCacheManager.cachedImage(forKey: urlString) {
             completion(memoryCachedImage)
             return nil
         }
         
-        if let diskCachedImage = diskCacheManager.cachedImage(urlString: urlString) {
-            memoryCacheManager.setObject(image: diskCachedImage, urlString: urlString)
+        if let diskCachedImage = diskCacheManager.cachedImage(forKey: urlString) {
+            memoryCacheManager.setObject(diskCachedImage, forKey: urlString)
             completion(diskCachedImage)
             return nil
         }
@@ -56,8 +54,8 @@ class ImageFetcher {
                 return
             }
                     
-            self.memoryCacheManager.setObject(image: image, urlString: urlString)
-            self.diskCacheManager.saveImage(image, forKey: urlString)
+            self.memoryCacheManager.setObject(image, forKey: urlString)
+            self.diskCacheManager.setObject(image, forKey: urlString)
             
             DispatchQueue.main.async {
                 completion(image)

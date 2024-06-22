@@ -10,6 +10,8 @@ import UIKit
 class SearchCollectionViewCell: UICollectionViewCell {
     static let id = "SearchCollectionViewCell"
     
+    var imageFetchTask: CancellableTask?
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "title :"
@@ -54,8 +56,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var imageView: URLUIImageView = {
-        let imageView = URLUIImageView()
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -63,7 +65,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         imageView.image = UIImage()
-        imageView.cancelLoadingImage()
+        
+        imageFetchTask?.cancel()
+        imageFetchTask = nil
     }
 }
 
@@ -75,7 +79,7 @@ extension SearchCollectionViewCell {
         priceLabel.text = book.getPrice()
         urlLabel.text = book.getURL()
         
-        imageView.setImage(urlString: book.getImageURL())
+        setImage(urlString: book.getImageURL())
         
         setupLayout()
     }
@@ -114,5 +118,16 @@ extension SearchCollectionViewCell {
         urlLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8.0).isActive = true
         urlLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         urlLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+    }
+}
+
+//TODO: CellModel 생성 시 책임 변경
+extension SearchCollectionViewCell {
+    private func setImage(urlString: String) {
+        self.imageFetchTask = AppDelegate.imageCacheManager.fetchImage(from: urlString) { [weak self] image in
+            guard let self else { return }
+            
+            self.imageView.image = image
+        }
     }
 }

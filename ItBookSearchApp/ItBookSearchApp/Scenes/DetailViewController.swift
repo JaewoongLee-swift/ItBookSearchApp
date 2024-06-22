@@ -12,8 +12,8 @@ class DetailViewController: UIViewController {
     var itBookDetailManager: ItBookDetailManager?
     var itBookDetail: ItBookDetail?
     
-    private lazy var imageView: URLUIImageView = {
-        let imageView = URLUIImageView()
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -278,7 +278,7 @@ extension DetailViewController {
                 self.itBookDetail = data
                 guard let bookDetail = self.itBookDetail else { return }
                 
-                self.imageView.setImage(urlString: bookDetail.getImageURL())
+                self.setDetailImage(urlString: bookDetail.getImageURL())
                 
                 DispatchQueue.main.async {
                     self.titleLabel.text = "Title: \(bookDetail.getTitle())"
@@ -314,6 +314,17 @@ extension DetailViewController {
             present(pdfViewController, animated: true)
         } else {
             print("PDF가 존재하지 않습니다.")
+        }
+    }
+}
+
+extension DetailViewController {
+    //TODO: ViewModel 생성 시 책임 분리
+    private func setDetailImage(urlString: String) {
+        AppDelegate.imageCacheManager.fetchImage(from: urlString) { [weak self] image in
+            guard let self else { return }
+            
+            self.imageView.image = image
         }
     }
 }
