@@ -68,7 +68,7 @@ final class DetailViewControllerTests: XCTestCase {
         var result: ItBookPDF?
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail?.pdf
+        result = sut.itBookDetail?.getPDFs()
         
         XCTAssertNil(result)
     }
@@ -86,7 +86,7 @@ final class DetailViewControllerTests: XCTestCase {
         var result: ItBookPDF?
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail?.pdf
+        result = sut.itBookDetail?.getPDFs()
         
         XCTAssertNotNil(result)
     }

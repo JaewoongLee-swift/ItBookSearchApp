@@ -11,6 +11,11 @@
 		062079332C21A5FD000CB436 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079322C21A5FD000CB436 /* ImageCacheManager.swift */; };
 		062079352C23B3EB000CB436 /* CancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079342C23B3EB000CB436 /* CancellableTask.swift */; };
 		062079372C25826E000CB436 /* ImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079362C25826E000CB436 /* ImageCacheable.swift */; };
+		062079392C26A6BE000CB436 /* ImageCacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */; };
+		0620793E2C2ADF25000CB436 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0620793D2C2ADF25000CB436 /* MockURLSessionDataTask.swift */; };
+		062079412C2AF163000CB436 /* MockImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079402C2AF163000CB436 /* MockImageCacheable.swift */; };
+		062079452C2B8F8E000CB436 /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 062079442C2B8F8E000CB436 /* mockImage.png */; };
+		062079472C2B91FB000CB436 /* TestImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079462C2B91FB000CB436 /* TestImageLoader.swift */; };
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
@@ -25,7 +30,6 @@
 		55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */; };
 		55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF2291D401900414462 /* URLSessionProtocol.swift */; };
 		55745FF7291D63F400414462 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF6291D63F400414462 /* MockURLSession.swift */; };
-		55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */; };
 		55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFC291D71DA00414462 /* JsonLoader.swift */; };
 		55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */; };
 		55746003291E570B00414462 /* EmptyItBookStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 55746002291E570B00414462 /* EmptyItBookStore.json */; };
@@ -64,6 +68,11 @@
 		062079322C21A5FD000CB436 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		062079342C23B3EB000CB436 /* CancellableTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTask.swift; sourceTree = "<group>"; };
 		062079362C25826E000CB436 /* ImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheable.swift; sourceTree = "<group>"; };
+		062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManagerTests.swift; sourceTree = "<group>"; };
+		0620793D2C2ADF25000CB436 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		062079402C2AF163000CB436 /* MockImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageCacheable.swift; sourceTree = "<group>"; };
+		062079442C2B8F8E000CB436 /* mockImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockImage.png; sourceTree = "<group>"; };
+		062079462C2B91FB000CB436 /* TestImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageLoader.swift; sourceTree = "<group>"; };
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +91,6 @@
 		55745FF0291D3FC600414462 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
 		55745FF2291D401900414462 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		55745FF6291D63F400414462 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
-		55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		55745FFA291D6E5900414462 /* MongoDBItBookStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MongoDBItBookStore.json; sourceTree = "<group>"; };
 		55745FFC291D71DA00414462 /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookStoreManagerTests.swift; sourceTree = "<group>"; };
@@ -125,6 +133,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0620793A2C26A788000CB436 /* ImageCacheTests */ = {
+			isa = PBXGroup;
+			children = (
+				062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */,
+			);
+			path = ImageCacheTests;
+			sourceTree = "<group>";
+		};
+		0620793F2C2ADF28000CB436 /* MockURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				0620793D2C2ADF25000CB436 /* MockURLSessionDataTask.swift */,
+				55745FF6291D63F400414462 /* MockURLSession.swift */,
+			);
+			path = MockURLSession;
+			sourceTree = "<group>";
+		};
+		062079422C2AF1DA000CB436 /* MockImageCacheable */ = {
+			isa = PBXGroup;
+			children = (
+				062079402C2AF163000CB436 /* MockImageCacheable.swift */,
+			);
+			path = MockImageCacheable;
+			sourceTree = "<group>";
+		};
+		062079432C2AF1ED000CB436 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				062079442C2B8F8E000CB436 /* mockImage.png */,
+				062079422C2AF1DA000CB436 /* MockImageCacheable */,
+				0620793F2C2ADF28000CB436 /* MockURLSession */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		062079482C2C321C000CB436 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				55745FFC291D71DA00414462 /* JsonLoader.swift */,
+				062079462C2B91FB000CB436 /* TestImageLoader.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		55745F81291972AF00414462 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +217,9 @@
 			children = (
 				55746011291E848D00414462 /* SearchViewControllerTests.swift */,
 				55746019291EDBBE00414462 /* DetailViewControllerTests.swift */,
+				062079482C2C321C000CB436 /* Utility */,
+				062079432C2AF1ED000CB436 /* Mock */,
+				0620793A2C26A788000CB436 /* ImageCacheTests */,
 				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
 			path = ItBookSearchAppTests;
@@ -210,21 +265,10 @@
 			path = ItBookDetailJson;
 			sourceTree = "<group>";
 		};
-		5574600E291E7C4C00414462 /* MockURLSession */ = {
-			isa = PBXGroup;
-			children = (
-				55745FF6291D63F400414462 /* MockURLSession.swift */,
-				55745FF8291D64C400414462 /* MockURLSessionDataTask.swift */,
-				55745FFC291D71DA00414462 /* JsonLoader.swift */,
-			);
-			path = MockURLSession;
-			sourceTree = "<group>";
-		};
 		5574600F291E7C5700414462 /* ItBookAPITests */ = {
 			isa = PBXGroup;
 			children = (
 				55745FFB291D6EB200414462 /* Json */,
-				5574600E291E7C4C00414462 /* MockURLSession */,
 				55745FFE291D80CB00414462 /* ItBookStoreManagerTests.swift */,
 				55746006291E690B00414462 /* ItBookDetailManagerTests.swift */,
 			);
@@ -395,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55746018291EBEBE00414462 /* Swift50ItBookStore.json in Resources */,
+				062079452C2B8F8E000CB436 /* mockImage.png in Resources */,
 				5574600C291E6DFE00414462 /* FileWeb_Scraping_with_Python_ItBookDetail.json in Resources */,
 				55746003291E570B00414462 /* EmptyItBookStore.json in Resources */,
 				5574600A291E698300414462 /* Securing_DevOps_ItBookDetail.json in Resources */,
@@ -441,11 +486,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */,
-				55745FF9291D64C400414462 /* MockURLSessionDataTask.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55746012291E848D00414462 /* SearchViewControllerTests.swift in Sources */,
+				062079392C26A6BE000CB436 /* ImageCacheManagerTests.swift in Sources */,
 				5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */,
+				0620793E2C2ADF25000CB436 /* MockURLSessionDataTask.swift in Sources */,
 				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,
+				062079472C2B91FB000CB436 /* TestImageLoader.swift in Sources */,
+				062079412C2AF163000CB436 /* MockImageCacheable.swift in Sources */,
 				55745FFF291D80CB00414462 /* ItBookStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,7 +662,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -642,7 +690,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

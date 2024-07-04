@@ -43,10 +43,10 @@ final class ItBookDetailManagerTests: XCTestCase {
         
         //then
         let expectation: ItBookDetail? = JsonLoader.load(type: ItBookDetail.self, fileName: "Securing_DevOps_ItBookDetail")
-        XCTAssertEqual(result?.title, expectation?.title)
-        XCTAssertEqual(result?.isbn13, expectation?.isbn13)
-        XCTAssertEqual(result?.pdf?.chapter2, expectation?.pdf?.chapter2)
-        XCTAssertEqual(result?.pdf?.chapter5, expectation?.pdf?.chapter5)
+        XCTAssertEqual(result?.getTitle(), expectation?.getTitle())
+        XCTAssertEqual(result?.getISBN13(), expectation?.getISBN13())
+        XCTAssertEqual(result?.getPDFs()?.chapter2, expectation?.getPDFs()?.chapter2)
+        XCTAssertEqual(result?.getPDFs()?.chapter5, expectation?.getPDFs()?.chapter5)
     }
     
     func test_fetchData_pdf_is_empty() {
@@ -69,9 +69,9 @@ final class ItBookDetailManagerTests: XCTestCase {
         
         //then
         let expectation: ItBookDetail? = JsonLoader.load(type: ItBookDetail.self, fileName: "FileWeb_Scraping_with_Python_ItBookDetail")
-        XCTAssertEqual(result?.title, expectation?.title)
-        XCTAssertEqual(result?.isbn13, expectation?.isbn13)
-        XCTAssertNil(result?.pdf)
+        XCTAssertEqual(result?.getTitle(), expectation?.getTitle())
+        XCTAssertEqual(result?.getISBN13(), expectation?.getISBN13())
+        XCTAssertNil(result?.getPDFs())
     }
     
     func test_fetchData_statusCode_is_500() {
