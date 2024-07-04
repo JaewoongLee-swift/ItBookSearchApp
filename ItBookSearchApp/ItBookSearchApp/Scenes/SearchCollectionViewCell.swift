@@ -124,7 +124,7 @@ extension SearchCollectionViewCell {
 //TODO: CellModel 생성 시 책임 변경
 extension SearchCollectionViewCell {
     private func setImage(urlString: String) {
-        self.imageFetchTask = AppDelegate.imageCacheManager.fetchImage(from: urlString) { [weak self] image in
+        self.imageFetchTask = AppDelegate.imageFetcher.fetchImage(from: urlString) { [weak self] image in
             guard let self else { return }
             
             self.imageView.image = image

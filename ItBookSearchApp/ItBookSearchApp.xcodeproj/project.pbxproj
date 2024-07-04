@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0620792F2C204D7D000CB436 /* ImageDiskCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */; };
-		062079332C21A5FD000CB436 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079322C21A5FD000CB436 /* ImageCacheManager.swift */; };
+		062079332C21A5FD000CB436 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079322C21A5FD000CB436 /* ImageFetcher.swift */; };
 		062079352C23B3EB000CB436 /* CancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079342C23B3EB000CB436 /* CancellableTask.swift */; };
 		062079372C25826E000CB436 /* ImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079362C25826E000CB436 /* ImageCacheable.swift */; };
-		062079392C26A6BE000CB436 /* ImageCacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */; };
+		062079392C26A6BE000CB436 /* ImageFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079382C26A6BE000CB436 /* ImageFetcherTests.swift */; };
 		0620793E2C2ADF25000CB436 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0620793D2C2ADF25000CB436 /* MockURLSessionDataTask.swift */; };
 		062079412C2AF163000CB436 /* MockImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079402C2AF163000CB436 /* MockImageCacheable.swift */; };
 		062079452C2B8F8E000CB436 /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 062079442C2B8F8E000CB436 /* mockImage.png */; };
@@ -65,10 +65,10 @@
 
 /* Begin PBXFileReference section */
 		0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDiskCacheManager.swift; sourceTree = "<group>"; };
-		062079322C21A5FD000CB436 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		062079322C21A5FD000CB436 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		062079342C23B3EB000CB436 /* CancellableTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTask.swift; sourceTree = "<group>"; };
 		062079362C25826E000CB436 /* ImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheable.swift; sourceTree = "<group>"; };
-		062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManagerTests.swift; sourceTree = "<group>"; };
+		062079382C26A6BE000CB436 /* ImageFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcherTests.swift; sourceTree = "<group>"; };
 		0620793D2C2ADF25000CB436 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		062079402C2AF163000CB436 /* MockImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageCacheable.swift; sourceTree = "<group>"; };
 		062079442C2B8F8E000CB436 /* mockImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockImage.png; sourceTree = "<group>"; };
@@ -133,12 +133,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0620793A2C26A788000CB436 /* ImageCacheTests */ = {
+		0620793A2C26A788000CB436 /* ImageFetcherTests */ = {
 			isa = PBXGroup;
 			children = (
-				062079382C26A6BE000CB436 /* ImageCacheManagerTests.swift */,
+				062079382C26A6BE000CB436 /* ImageFetcherTests.swift */,
 			);
-			path = ImageCacheTests;
+			path = ImageFetcherTests;
 			sourceTree = "<group>";
 		};
 		0620793F2C2ADF28000CB436 /* MockURLSession */ = {
@@ -219,7 +219,7 @@
 				55746019291EDBBE00414462 /* DetailViewControllerTests.swift */,
 				062079482C2C321C000CB436 /* Utility */,
 				062079432C2AF1ED000CB436 /* Mock */,
-				0620793A2C26A788000CB436 /* ImageCacheTests */,
+				0620793A2C26A788000CB436 /* ImageFetcherTests */,
 				5574600F291E7C5700414462 /* ItBookAPITests */,
 			);
 			path = ItBookSearchAppTests;
@@ -311,7 +311,7 @@
 				062079362C25826E000CB436 /* ImageCacheable.swift */,
 				5574601D291F83DB00414462 /* ImageMemoryCacheManager.swift */,
 				0620792E2C204D7D000CB436 /* ImageDiskCacheManager.swift */,
-				062079322C21A5FD000CB436 /* ImageCacheManager.swift */,
+				062079322C21A5FD000CB436 /* ImageFetcher.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -476,7 +476,7 @@
 				062079372C25826E000CB436 /* ImageCacheable.swift in Sources */,
 				55745FEB291D264100414462 /* DetailViewController.swift in Sources */,
 				55745F90291972AF00414462 /* SceneDelegate.swift in Sources */,
-				062079332C21A5FD000CB436 /* ImageCacheManager.swift in Sources */,
+				062079332C21A5FD000CB436 /* ImageFetcher.swift in Sources */,
 				55745FCA291C01EF00414462 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +488,7 @@
 				55745FFD291D71DA00414462 /* JsonLoader.swift in Sources */,
 				55745FF7291D63F400414462 /* MockURLSession.swift in Sources */,
 				55746012291E848D00414462 /* SearchViewControllerTests.swift in Sources */,
-				062079392C26A6BE000CB436 /* ImageCacheManagerTests.swift in Sources */,
+				062079392C26A6BE000CB436 /* ImageFetcherTests.swift in Sources */,
 				5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */,
 				0620793E2C2ADF25000CB436 /* MockURLSessionDataTask.swift in Sources */,
 				55746007291E690B00414462 /* ItBookDetailManagerTests.swift in Sources */,

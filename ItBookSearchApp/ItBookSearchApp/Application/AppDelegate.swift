@@ -9,7 +9,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    static let imageCacheManager = ImageCacheManager(
+    static let imageFetcher = ImageFetcher(
         memoryCacheManager: ImageMemoryCacheManager(),
         diskCacheManager: ImageDiskCacheManager()
     )

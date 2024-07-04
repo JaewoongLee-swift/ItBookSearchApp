@@ -321,10 +321,12 @@ extension DetailViewController {
 extension DetailViewController {
     //TODO: ViewModel 생성 시 책임 분리
     private func setDetailImage(urlString: String) {
-        AppDelegate.imageCacheManager.fetchImage(from: urlString) { [weak self] image in
+        let _ = AppDelegate.imageFetcher.fetchImage(from: urlString) { [weak self] image in
             guard let self else { return }
             
-            self.imageView.image = image
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
         }
     }
 }

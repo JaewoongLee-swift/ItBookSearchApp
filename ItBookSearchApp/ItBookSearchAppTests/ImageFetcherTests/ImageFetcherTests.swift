@@ -1,5 +1,5 @@
 //
-//  ImageCacheManagerTests.swift
+//  ImageFetcherTests.swift
 //  ItBookSearchAppTests
 //
 //  Created by Jaewoong Lee on 6/22/24.
@@ -8,11 +8,11 @@
 import XCTest
 @testable import ItBookSearchApp
 
-final class ImageCacheManagerTests: XCTestCase {
+final class ImageFetcherTests: XCTestCase {
     var memoryCache: MockImageCacheable!
     var diskCache: MockImageCacheable!
     var session: MockURLSession!
-    var sut: ImageCacheManager!
+    var sut: ImageFetcher!
     
     override func setUpWithError() throws {
         try super.setUpWithError()

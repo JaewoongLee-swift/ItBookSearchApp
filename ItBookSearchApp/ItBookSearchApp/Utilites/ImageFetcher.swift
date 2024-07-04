@@ -1,5 +1,5 @@
 //
-//  ImageCacheManager.swift
+//  ImageFetcher.swift
 //  ItBookSearchApp
 //
 //  Created by Jaewoong Lee on 6/18/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageCacheManager {
+class ImageFetcher {
     private let memoryCacheManager: ImageCacheable
     private let diskCacheManager: ImageCacheable
     private let session: URLSessionProtocol
