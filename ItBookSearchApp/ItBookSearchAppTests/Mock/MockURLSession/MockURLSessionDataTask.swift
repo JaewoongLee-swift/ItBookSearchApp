@@ -17,8 +17,7 @@ class MockURLSessionDataTask: URLSessionDataTaskProtocol {
     }
     
     func resume() {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let self = self else { return }
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
             if !self.isCancelled {
                 self.resumeHandler()
             }
