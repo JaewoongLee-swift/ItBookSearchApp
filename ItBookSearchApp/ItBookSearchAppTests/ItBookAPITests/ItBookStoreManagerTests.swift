@@ -23,100 +23,117 @@ final class ItBookStoreManagerTests: XCTestCase {
     }
     
     func test_fetchData_statusCode_is_200() {
-        //given
+        // given
         let searchText = "mongoDB"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
         let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
-
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
+        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "MongoDBItBookStore")
+        let expectationForWait = self.expectation(description: "ItBookStoreManager fetch ItBookStore with status code 200")
         
-        //when
+        // when
         var result: ItBookStore?
         sut.requestItBookStore(bookName: searchText) { response in
             if case let .success(itBookStore) = response {
                 result = itBookStore
             }
+            
+            // then
+            XCTAssertEqual(result?.total, expectation?.total)
+            XCTAssertEqual(result?.error, expectation?.error)
+            XCTAssertEqual(result?.page, expectation?.page)
+            XCTAssertEqual(result?.books.count, expectation?.books.count)
+            
+            expectationForWait.fulfill()
         }
         
-        //then
-        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "MongoDBItBookStore")
-        XCTAssertEqual(result?.total, expectation?.total)
-        XCTAssertEqual(result?.error, expectation?.error)
-        XCTAssertEqual(result?.page, expectation?.page)
-        XCTAssertEqual(result?.books.count, expectation?.books.count)
+        wait(for: [expectationForWait], timeout: 10)
     }
     
     func test_fetchData_searchResult_is_empty() {
-        //given
+        // given
         let searchText = "fefagawgrgrga"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
         let data: Data? = JsonLoader.data(fileName: "EmptyItBookStore")
         
         let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
+        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "EmptyItBookStore")
+        let expectationForWait = self.expectation(description: "ItBookStoreManager fetch ItBookStore but empty results")
         
-        //when
+        // when
         var result: ItBookStore?
         sut.requestItBookStore(bookName: searchText) { response in
             if case let .success(itBookStore) = response {
                 result = itBookStore
             }
+            
+            // then
+            XCTAssertEqual(result?.books.count, expectation?.books.count)
+            XCTAssertEqual(result?.total, expectation?.total)
+            XCTAssertEqual(result?.error, expectation?.error)
+            XCTAssertEqual(result?.page, expectation?.page)
+            
+            expectationForWait.fulfill()
         }
         
-        //then
-        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "EmptyItBookStore")
-        XCTAssertEqual(result?.books.count, expectation?.books.count)
-        XCTAssertEqual(result?.total, expectation?.total)
-        XCTAssertEqual(result?.error, expectation?.error)
-        XCTAssertEqual(result?.page, expectation?.page)
+        wait(for: [expectationForWait], timeout: 10)
     }
     
     func test_fetchData_searchText_is_empty() {
-        //given
+        // given
         let searchText = ""
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
         let data: Data? = JsonLoader.data(fileName: "SearchTextNilItBookStore")
-        
         let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 200)
         let sut = ItBookStoreManager(session: mockURLSession)
+        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "SearchTextNilItBookStore")
+        let expectationForWait = self.expectation(description: "ItBookStoreManager fetch with empty search text")
         
-        //when
+        // when
         var result: ItBookStore?
         sut.requestItBookStore(bookName: searchText) { response in
             if case let .success(itBookStore) = response {
                 result = itBookStore
             }
+            
+            // then
+            XCTAssertEqual(result?.books.count, expectation?.books.count)
+            XCTAssertEqual(result?.total, expectation?.total)
+            XCTAssertEqual(result?.error, expectation?.error)
+            XCTAssertEqual(result?.page, expectation?.page)
+            
+            expectationForWait.fulfill()
         }
         
-        //then
-        let expectation: ItBookStore? = JsonLoader.load(type: ItBookStore.self, fileName: "SearchTextNilItBookStore")
-        XCTAssertEqual(result?.books.count, expectation?.books.count)
-        XCTAssertEqual(result?.total, expectation?.total)
-        XCTAssertEqual(result?.error, expectation?.error)
-        XCTAssertEqual(result?.page, expectation?.page)
+        wait(for: [expectationForWait], timeout: 10)
     }
     
     func test_fetchData_statusCode_is_500() {
-        //given
+        // given
         let searchText = "mongoDB"
         let url = "https://api.itbook.store/1.0/search/\(searchText)"
         let data: Data? = JsonLoader.data(fileName: "MongoDBItBookStore")
-        
         let mockURLSession = MockURLSession.make(url: url, data: data, statusCode: 500)
         let sut = ItBookStoreManager(session: mockURLSession)
+        let expectation: ItBookStoreError = ItBookStoreError.requestFailError
+        let expectationForWait = self.expectation(description: "ItBookStoreManager fetch with status code 500")
         
-        //when
+        // when
         var result: ItBookStoreError?
         sut.requestItBookStore(bookName: searchText) { response in
             if case let .failure(error) = response {
                 result = error as? ItBookStoreError
             }
+            
+            // then
+            XCTAssertEqual(result, expectation)
+            
+            expectationForWait.fulfill()
         }
         
-        //then
-        let expectation: ItBookStoreError = ItBookStoreError.requestFailError
-        XCTAssertEqual(result, expectation)
+        wait(for: [expectationForWait], timeout: 10)
     }
 }

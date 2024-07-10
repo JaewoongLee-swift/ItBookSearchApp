@@ -27,14 +27,18 @@ final class DetailViewControllerTests: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookDetailManager(session: mockURLSession)
+        let expectation = expectation(description: "DetailViewController fetch ItBookDetail")
         
         //when
-        var result: ItBookDetail?
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail
+        // then
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            XCTAssertNotNil(self.sut.itBookDetail)
+            expectation.fulfill()
+        }
         
-        XCTAssertNotNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookDetail_호출실패하면_itBookDetail에_데이터는_nil() {
@@ -45,14 +49,18 @@ final class DetailViewControllerTests: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookDetailManager(session: mockURLSession)
+        let expectation = expectation(description: "DetailViewController fail to fetch ItBookDetail")
         
         //when
-        var result: ItBookDetail?
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail
+        // then
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            XCTAssertNil(self.sut.itBookDetail)
+            expectation.fulfill()
+        }
         
-        XCTAssertNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookDetail_pdf없는_데이터_itBookDetail의_pdf_nil() {
@@ -63,14 +71,19 @@ final class DetailViewControllerTests: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookDetailManager(session: mockURLSession)
+        let expectation = expectation(description: "DetailViewController fetch ItBookDetail with no pdf")
         
-        //when
-        var result: ItBookPDF?
+        // when
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail?.pdf
+        // then
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            XCTAssertNotNil(self.sut.itBookDetail)
+            XCTAssertNil(self.sut.itBookDetail?.getPDFs())
+            expectation.fulfill()
+        }
         
-        XCTAssertNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookDetail_pdf있는_데이터_itBookDetail의_pdf_존재() {
@@ -81,13 +94,17 @@ final class DetailViewControllerTests: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookDetailManager(session: mockURLSession)
+        let expectation = expectation(description: "ItBookDetail fetch from URLSession with PDFs")
         
-        //when
-        var result: ItBookPDF?
+        // when
         sut.requestItBookDetail(from: isbn13, by: networkManager)
         
-        result = sut.itBookDetail?.pdf
+        // then
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            XCTAssertNotNil(self.sut.itBookDetail?.getPDFs())
+            expectation.fulfill()
+        }
         
-        XCTAssertNotNil(result)
+        wait(for: [expectation], timeout: 10)
     }
 }

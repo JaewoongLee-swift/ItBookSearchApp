@@ -27,90 +27,111 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "SearchViewController request ItBookStore with status code 200")
         
-        //when
-        var result: ItBookStore?
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.itBookStore
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertNotNil(self.sut.itBookStore)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertNotNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_성공적으로_호출하면_books에_데이터가_할당된다() {
         // given
-        sut = SearchViewController()
         let searchTitle = "swift"
         let url = "https://api.itbook.store/1.0/search/\(searchTitle)"
         let data: Data? = JsonLoader.data(fileName: "SwiftItBookStore")
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "books exist after SearchViewController request ItBookStore with status code 200")
         
-        //when
-        var result: [ItBook]
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.books
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertFalse(self.sut.books.isEmpty)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertNotEqual(result.count, 0)
+        wait(for: [expectation], timeout: 10)
     }
 
     func test_requestItBookStore_호출실패시_books는_비어있음() {
         // given
-        sut = SearchViewController()
         let searchTitle = "swift"
         let url = "https://api.itbook.store/1.0/search/\(searchTitle)"
         let data: Data? = JsonLoader.data(fileName: "SwiftItBookStore")
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Books not exist after SearchViewController request ItBookStore with status code 500")
         
-        //when
-        var result: [ItBook]
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.books
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertTrue(self.sut.books.isEmpty)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertTrue(result.isEmpty)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_검색텍스트가_없을때_books는_empty() {
         // given
-        sut = SearchViewController()
         let searchTitle = ""
         let url = "https://api.itbook.store/1.0/search/\(searchTitle)"
         let data: Data? = JsonLoader.data(fileName: "SearchTextNilItBookStore")
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Books exist but empty after SearchViewController request ItBookStore with status code 200")
         
-        //when
-        var result: [ItBook]
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.books
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertTrue(self.sut.books.isEmpty)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertTrue(result.isEmpty)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_검색결과가_없을때_books는_empty() {
         // given
-        sut = SearchViewController()
         let searchTitle = "aaaaa"
         let url = "https://api.itbook.store/1.0/search/\(searchTitle)"
         let data: Data? = JsonLoader.data(fileName: "EmptyItBookStore")
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Books don't exist after SearchViewController request ItBookStore with status code 200")
         
-        //when
-        var result: [ItBook]
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.books
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertTrue(self.sut.books.isEmpty)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertTrue(result.isEmpty)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_성공적으로_호출하면_totalPage에_값이_할당된다() {
@@ -121,14 +142,19 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Total page is assigned after SearchViewController request ItBookStore with status code 200")
         
-        //when
-        var result: Int?
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.totalPage
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertNotNil(self.sut.totalPage)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertNotNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_호출실패하면_totalPage_nil() {
@@ -139,14 +165,19 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Total page is nil after SearchViewController request ItBookStore with status code 500")
         
-        //when
-        var result: Int?
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.totalPage
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertNil(self.sut.totalPage)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStore_호출실패하면_currentPage_nil() {
@@ -157,14 +188,19 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Current page is nil after SearchViewController request ItBookStore with status code 500")
         
-        //when
-        var result: Int?
+        // when
         sut.requestItBookStore(from: searchTitle, by: networkManager)
         
-        result = sut.currentPage
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertNil(self.sut.currentPage)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertNil(result)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStorePagination_호출성공하면_books에_append() {
@@ -176,26 +212,26 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Books is appended  after SearchViewController request ItBookStore with status code 200")
         
-        //when
+        // when
         var result = 0
-        var totalCount = 0
-        let itBookCountBeforeRequest = sut.itBookStore?.books.count
+        let booksCountBeforeRequest = sut.books.count
         
         sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
         
-        let requestedItBookCount = sut.itBookStore?.books.count
-        result = sut.books.count
-        
-        if let beforeCount = itBookCountBeforeRequest {
-            totalCount += beforeCount
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            if let itBookStoresBookCountAfterRequest = self.sut.itBookStore?.books.count {
+                XCTAssertEqual(self.sut.books.count, itBookStoresBookCountAfterRequest + booksCountBeforeRequest)
+            } else {
+                XCTFail("'requestItBookStorePagination' is failed")
+            }
+            
+            expectation.fulfill()
         }
-        if let afterCount = requestedItBookCount {
-            totalCount += afterCount
-        }
         
-        
-        XCTAssertEqual(result, totalCount)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStorePagination_호출실패하면_books_그대로() {
@@ -207,16 +243,21 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "Books don't changed  after SearchViewController request ItBookStore with status code 500")
         
-        //when
-        var result = 0
-        let itBookCountBeforeRequest = sut.books.count
+        // when
+        let booksCountBeforeRequest = sut.books.count
         
         sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
         
-        result = sut.books.count
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertEqual(self.sut.books.count, booksCountBeforeRequest)
+         
+            expectation.fulfill()
+        }
         
-        XCTAssertEqual(result, itBookCountBeforeRequest)
+        wait(for: [expectation], timeout: 10)
     }
     
     func test_requestItBookStorePagination_pagination결과_없으면_itBookStore의_booksCount는_0() {
@@ -228,14 +269,19 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 200)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "ItBookStore's book count is 0 if pagination result is empty")
         
-        //when
-        var result: Int?
+        // when
         sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
         
-        result = sut.itBookStore?.books.count
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertEqual(self.sut.itBookStore?.books.count, 0)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertEqual(result, 0)
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func test_requestItBookStorePagination_호출실패하면_itBookStore_그대로() {
@@ -247,17 +293,18 @@ final class SearchViewControllerTest: XCTestCase {
         let mockURLSession = MockURLSession.make(
             url: url, data: data, statusCode: 500)
         let networkManager = ItBookStoreManager(session: mockURLSession)
+        let expectation = expectation(description: "ItBookStore doesn't change if pagination request is failed")
         
         //when
-        let beforeItBookStore = sut.itBookStore
-        var result: ItBookStore?
         sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
         
-        result = sut.itBookStore
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            // then
+            XCTAssertNil(self.sut.itBookStore)
+            
+            expectation.fulfill()
+        }
         
-        XCTAssertEqual(result?.error, beforeItBookStore?.error)
-        XCTAssertEqual(result?.total, beforeItBookStore?.total)
-        XCTAssertEqual(result?.page, beforeItBookStore?.page)
-        XCTAssertEqual(result?.books.count, beforeItBookStore?.books.count)
+        wait(for: [expectation], timeout: 10)
     }
 }
