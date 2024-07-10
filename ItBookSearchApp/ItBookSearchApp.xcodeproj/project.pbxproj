@@ -17,6 +17,7 @@
 		062079452C2B8F8E000CB436 /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 062079442C2B8F8E000CB436 /* mockImage.png */; };
 		062079472C2B91FB000CB436 /* TestImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062079462C2B91FB000CB436 /* TestImageLoader.swift */; };
 		066E4CB82C3EA906006D9802 /* NetworkAPIDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CB72C3EA906006D9802 /* NetworkAPIDefinition.swift */; };
+		066E4CBA2C3EA936006D9802 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CB92C3EA936006D9802 /* NetworkAPI.swift */; };
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		062079442C2B8F8E000CB436 /* mockImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockImage.png; sourceTree = "<group>"; };
 		062079462C2B91FB000CB436 /* TestImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageLoader.swift; sourceTree = "<group>"; };
 		066E4CB72C3EA906006D9802 /* NetworkAPIDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPIDefinition.swift; sourceTree = "<group>"; };
+		066E4CB92C3EA936006D9802 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				066E4CB72C3EA906006D9802 /* NetworkAPIDefinition.swift */,
+				066E4CB92C3EA936006D9802 /* NetworkAPI.swift */,
 			);
 			path = APIKit;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				066E4CB82C3EA906006D9802 /* NetworkAPIDefinition.swift in Sources */,
 				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
+				066E4CBA2C3EA936006D9802 /* NetworkAPI.swift in Sources */,
 				55745FEF291D335300414462 /* ItBookAPI.swift in Sources */,
 				55745FF1291D3FC600414462 /* URLSessionDataTaskProtocol.swift in Sources */,
 				55745F8E291972AF00414462 /* AppDelegate.swift in Sources */,
