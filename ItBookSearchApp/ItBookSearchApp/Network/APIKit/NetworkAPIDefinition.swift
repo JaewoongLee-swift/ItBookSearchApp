@@ -7,4 +7,12 @@
 
 import Foundation
 
-protocol NetworkAPIDefinition { }
+protocol NetworkAPIDefinition {
+    associatedtype Parameter: Encodable
+    associatedtype Response: Decodable
+    
+    var urlInfo: NetworkAPI.URLInfo { get }
+    var method: NetworkAPI.Method { get }
+    var headers: [String: String]? { get }
+    var parameters: Parameter? { get }
+}
