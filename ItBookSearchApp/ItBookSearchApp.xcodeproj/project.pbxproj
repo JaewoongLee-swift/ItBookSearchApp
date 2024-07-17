@@ -20,6 +20,7 @@
 		066E4CBA2C3EA936006D9802 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CB92C3EA936006D9802 /* NetworkAPI.swift */; };
 		066E4CBC2C3EA954006D9802 /* NetworkAPI+URLInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CBB2C3EA954006D9802 /* NetworkAPI+URLInfo.swift */; };
 		066E4CBE2C3EAA7E006D9802 /* NetworkAPI+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CBD2C3EAA7E006D9802 /* NetworkAPI+Method.swift */; };
+		066E4CC02C47D3A1006D9802 /* NetworkAPI+RequestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E4CBF2C47D3A1006D9802 /* NetworkAPI+RequestInfo.swift */; };
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		066E4CB92C3EA936006D9802 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		066E4CBB2C3EA954006D9802 /* NetworkAPI+URLInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkAPI+URLInfo.swift"; sourceTree = "<group>"; };
 		066E4CBD2C3EAA7E006D9802 /* NetworkAPI+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkAPI+Method.swift"; sourceTree = "<group>"; };
+		066E4CBF2C47D3A1006D9802 /* NetworkAPI+RequestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkAPI+RequestInfo.swift"; sourceTree = "<group>"; };
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				066E4CB92C3EA936006D9802 /* NetworkAPI.swift */,
 				066E4CBB2C3EA954006D9802 /* NetworkAPI+URLInfo.swift */,
 				066E4CBD2C3EAA7E006D9802 /* NetworkAPI+Method.swift */,
+				066E4CBF2C47D3A1006D9802 /* NetworkAPI+RequestInfo.swift */,
 			);
 			path = APIKit;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				062079352C23B3EB000CB436 /* CancellableTask.swift in Sources */,
 				5574601E291F83DB00414462 /* ImageMemoryCacheManager.swift in Sources */,
 				066E4CB82C3EA906006D9802 /* NetworkAPIDefinition.swift in Sources */,
+				066E4CC02C47D3A1006D9802 /* NetworkAPI+RequestInfo.swift in Sources */,
 				55745FF3291D401900414462 /* URLSessionProtocol.swift in Sources */,
 				55745FBE29197D9E00414462 /* ItBookStore.swift in Sources */,
 				066E4CBA2C3EA936006D9802 /* NetworkAPI.swift in Sources */,
