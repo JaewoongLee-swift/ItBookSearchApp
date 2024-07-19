@@ -7,6 +7,8 @@
 
 import Foundation
 
+enum ItBookAPI { }
+
 enum ItBookStoreError: Error {
     case requestFailError
     case jsonParsingError
