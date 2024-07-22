@@ -27,6 +27,14 @@ class MockURLSession: URLSessionProtocol {
         })
     }
     
+    func dataTask(with urlRequest: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> ItBookSearchApp.URLSessionDataTaskProtocol {
+        return MockURLSessionDataTask(resumeHandler: {
+            completionHandler(self.data,
+                              self.urlResponse,
+                              self.error)
+        })
+    }
+    
     static func make(url: String, data: Data?, statusCode: Int) -> MockURLSession {
         .init(data: data,
               urlResponse: HTTPURLResponse(url: URL(string: url)!,
