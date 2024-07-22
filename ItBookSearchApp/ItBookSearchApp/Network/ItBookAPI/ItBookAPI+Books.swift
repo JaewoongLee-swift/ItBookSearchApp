@@ -27,9 +27,25 @@ extension ItBookAPI.Books {
     func request(completion: @escaping (Result<ItBookDetail, Error>) -> Void) -> URLSessionDataTaskProtocol {
         let request = requestInfo.request(url: urlInfo.url)
         
-        let dataTask = session.dataTask(with: request) { dataTask, response, error
+        let dataTask = session.dataTask(with: request) { data, response, error
             in
-            <#code#>
+            if let error {
+                completion(.failure(error))
+                return
+            }
+            
+            if let data,
+               let response = response as? HTTPURLResponse,
+               (200..<300) ~= response.statusCode {
+                do {
+                    let itBookDetail = try JSONDecoder().decode(ItBookDetail.self, from: data)
+                    completion(.success(itBookDetail))
+                } catch {
+                    completion(.failure(ItBookStoreError.jsonParsingError))
+                }
+            } else {
+                completion(.failure(ItBookStoreError.requestFailError))
+            }
         }
         dataTask.resume()
         
