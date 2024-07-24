@@ -12,7 +12,7 @@ extension NetworkAPI {
         let scheme: String
         let host: String
         let port: Int?
-        let path: String
+        private(set) var path: String
         let query: [String: String]?
         
         init(
@@ -46,5 +46,9 @@ extension NetworkAPI.URLInfo {
         }
         
         return url
+    }
+    
+    mutating func addPath(_ path: String) {
+        self.path += path
     }
 }
