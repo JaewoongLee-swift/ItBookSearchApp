@@ -1,18 +1,18 @@
 //
-//  ItBookAPI+SearchTests.swift
+//  ItBookAPI+BooksTests.swift
 //  ItBookSearchAppTests
 //
-//  Created by Jaewoong Lee on 7/22/24.
+//  Created by Jaewoong Lee on 7/24/24.
 //
 
 import XCTest
 @testable import ItBookSearchApp
 
-final class ItBookAPI_SearchTests: XCTestCase {
-    var sut: ItBookAPI.Search!
+final class ItBookAPI_BooksTests: XCTestCase {
+    var sut: ItBookAPI.Books!
     var mockSession: MockURLSession!
     
-    override func setUpWithError() throws { 
+    override func setUpWithError() throws {
         mockSession = MockURLSession()
     }
     
@@ -24,13 +24,10 @@ final class ItBookAPI_SearchTests: XCTestCase {
     func test_request_with_statusCode_200_then_success() {
         // given
         mockSession.urlResponse = urlResponse(statusCode: 200)
-        mockSession.data = JsonLoader.data(fileName: "MongoDBItBookStore")
-        sut = .init(
-            bookName: "Test",
-            session: mockSession
-        )
+        mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
+        sut = .init(isbn13: "Test", session: mockSession)
         
-        let expectation = expectation(description: "If status code is 200, ItBookAPI Search success response")
+        let expectation = expectation(description: "If status code is 200, ItBookAPI Books success response")
         
         // when
         let _ = sut.request { result in
@@ -39,10 +36,10 @@ final class ItBookAPI_SearchTests: XCTestCase {
                 // then
                 expectation.fulfill()
             case .failure(let error):
-                XCTFail("ItBookAPI_Search's status code is 200, but response failed with error. (\(error.localizedDescription))")
+                XCTFail("ItBookAPI_Books's status code is 200, but response failed with error. (\(error.localizedDescription))")
             }
         }
-
+        
         waitForExpectations(timeout: 3, handler: nil)
     }
     
@@ -50,20 +47,17 @@ final class ItBookAPI_SearchTests: XCTestCase {
         // given
         let givenError = ItBookStoreError.requestFailError
         mockSession.urlResponse = urlResponse(statusCode: 200)
-        mockSession.data = JsonLoader.data(fileName: "MongoDBItBookStore")
+        mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
         mockSession.error = givenError
-        sut = .init(
-            bookName: "Test",
-            session: mockSession
-        )
+        sut = .init(isbn13: "Test", session: mockSession)
         
-        let expectation = expectation(description: "If result has error, ItBookAPI Search fails to response")
+        let expectation = expectation(description: "If result has error, ItBookAPI Books fails to response")
         
         // when
         let _ = sut.request { result in
             switch result {
             case .success(_):
-                XCTFail("ItBookAPI_Search's result has error, but response returns success.")
+                XCTFail("ItBookAPI_Books's result has error, but response returns success.")
             case .failure(let error):
                 // then
                 XCTAssertEqual(error as? ItBookStoreError, givenError)
@@ -77,45 +71,40 @@ final class ItBookAPI_SearchTests: XCTestCase {
     func test_request_with_statusCode_300_then_fail() {
         // given
         mockSession.urlResponse = urlResponse(statusCode: 300)
-        mockSession.data = JsonLoader.data(fileName: "MongoDBItBookStore")
-        sut = .init(
-            bookName: "Test",
-            session: mockSession
-        )
+        mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
+        sut = .init(isbn13: "Test", session: mockSession)
         
-        let expectation = expectation(description: "If status code is 300, ItBookAPI Search fails to response")
+        let expectation = expectation(description: "If status code is 300, ItBookAPI Books fails to response")
         
         // when
         let _ = sut.request { result in
             switch result {
             case .success(_):
-                XCTFail("ItBookAPI_Search's status code is 300, but response returns success.")
+                XCTFail("ItBookAPI_Books's status code is 300, but response returns success.")
             case .failure(let error):
                 // then
                 XCTAssertEqual(error as? ItBookStoreError, ItBookStoreError.requestFailError)
                 expectation.fulfill()
             }
         }
-
+        
         waitForExpectations(timeout: 3, handler: nil)
     }
     
     func test_request_with_statusCode_200_and_empty_data_then_fail() {
         // given
         mockSession.urlResponse = urlResponse(statusCode: 200)
-        sut = .init(
-            bookName: "Test",
-            session: mockSession
-        )
+        sut = .init(isbn13: "Test", session: mockSession)
         
-        let expectation = expectation(description: "If status code is 200 with empty data, ItBookAPI Search fails to response")
+        let expectation = expectation(description: "If status code is 200 with empty data, ItBookAPI Books fails to response")
         
-        // then
+        // when
         let _ = sut.request { result in
             switch result {
             case .success(_):
-                XCTFail("ItBookAPI_Search's status code is 200, but response failed with error.")
+                XCTFail("ItBookAPI_Books's status code is 200, but response failed with error.")
             case .failure(let error):
+                // then
                 XCTAssertEqual(error as? ItBookStoreError, ItBookStoreError.requestFailError)
                 expectation.fulfill()
             }
@@ -128,19 +117,17 @@ final class ItBookAPI_SearchTests: XCTestCase {
         // given
         mockSession.urlResponse = urlResponse(statusCode: 200)
         mockSession.data = "Wrong Data".data(using: .utf8)
-        sut = .init(
-            bookName: "Test",
-            session: mockSession
-        )
+        sut = .init(isbn13: "Test", session: mockSession)
         
-        let expectation = expectation(description: "If status code is 200 with wrong data, ItBookAPI Search fails to response")
+        let expectation = expectation(description: "If status code is 200 with wrong data, ItBookAPI Books fails to response")
         
-        // then
+        // when
         let _ = sut.request { result in
             switch result {
             case .success(_):
-                XCTFail("ItBookAPI_Search's status code is 200, but response failed with error.")
+                XCTFail("ItBookAPI_Books's status code is 200, but response failed with error.")
             case .failure(let error):
+                // then
                 XCTAssertEqual(error as? ItBookStoreError, ItBookStoreError.jsonParsingError)
                 expectation.fulfill()
             }
@@ -150,9 +137,9 @@ final class ItBookAPI_SearchTests: XCTestCase {
     }
 }
 
-extension ItBookAPI_SearchTests {
+extension ItBookAPI_BooksTests {
     private func urlResponse(statusCode: Int) -> HTTPURLResponse {
-        let url = URL(string: "https://api.itbook.store/1.0/search/")!
+        let url = URL(string: "https://api.itbook.store/1.0/books/")!
         
         return .init(
             url: url,
