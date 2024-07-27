@@ -187,17 +187,14 @@ final class SearchViewControllerTest: XCTestCase {
         // given
         let searchTitle = "swift"
         let page = 2
-        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
-        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
-        let mockURLSession = MockURLSession.make(
-            url: url, data: data, statusCode: 200)
-        let networkManager = ItBookStoreManager(session: mockURLSession)
+        mockSession.data = JsonLoader.data(fileName: "Swift2ItBookStore")
+        mockSession.urlResponse = .searchURLResponse(statusCode: 200)
         let expectation = expectation(description: "Books is appended  after SearchViewController request ItBookStore with status code 200")
         
         // when
         let booksCountBeforeRequest = sut.books.count
         
-        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        sut.requestItBookStorePagination(from: searchTitle, at: page)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             // then
@@ -217,17 +214,14 @@ final class SearchViewControllerTest: XCTestCase {
         // given
         let searchTitle = "swift"
         let page = 2
-        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
-        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
-        let mockURLSession = MockURLSession.make(
-            url: url, data: data, statusCode: 500)
-        let networkManager = ItBookStoreManager(session: mockURLSession)
+        mockSession.data = JsonLoader.data(fileName: "Swift2ItBookStore")
+        mockSession.urlResponse = .searchURLResponse(statusCode: 500)
         let expectation = expectation(description: "Books don't changed  after SearchViewController request ItBookStore with status code 500")
         
         // when
         let booksCountBeforeRequest = sut.books.count
         
-        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        sut.requestItBookStorePagination(from: searchTitle, at: page)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             // then
@@ -243,15 +237,12 @@ final class SearchViewControllerTest: XCTestCase {
         // given
         let searchTitle = "swift"
         let page = 50
-        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
-        let data: Data? = JsonLoader.data(fileName: "Swift50ItBookStore")
-        let mockURLSession = MockURLSession.make(
-            url: url, data: data, statusCode: 200)
-        let networkManager = ItBookStoreManager(session: mockURLSession)
+        mockSession.data = JsonLoader.data(fileName: "Swift50ItBookStore")
+        mockSession.urlResponse = .searchURLResponse(statusCode: 200)
         let expectation = expectation(description: "ItBookStore's book count is 0 if pagination result is empty")
         
         // when
-        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        sut.requestItBookStorePagination(from: searchTitle, at: page)
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
             // then
@@ -267,15 +258,12 @@ final class SearchViewControllerTest: XCTestCase {
         // given
         let searchTitle = "swift"
         let page = 2
-        let url = "https://api.itbook.store/1.0/search/\(searchTitle)/\(page)"
-        let data: Data? = JsonLoader.data(fileName: "Swift2ItBookStore")
-        let mockURLSession = MockURLSession.make(
-            url: url, data: data, statusCode: 500)
-        let networkManager = ItBookStoreManager(session: mockURLSession)
+        mockSession.data = JsonLoader.data(fileName: "Swift2ItBookStore")
+        mockSession.urlResponse = .searchURLResponse(statusCode: 500)
         let expectation = expectation(description: "ItBookStore doesn't change if pagination request is failed")
         
         //when
-        sut.requestItBookStorePagination(from: searchTitle, at: page, by: networkManager)
+        sut.requestItBookStorePagination(from: searchTitle, at: page)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             // then
