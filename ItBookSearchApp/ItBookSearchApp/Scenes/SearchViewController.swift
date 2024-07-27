@@ -8,8 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    var itBookStoreManager: ItBookStoreManager?
     var itBookStore: ItBookStore?
+    var searchApi: ItBookAPI.Search
     
     var books : [ItBook] = []
     
@@ -75,6 +75,15 @@ class SearchViewController: UIViewController {
         
         return stackView
     }()
+    
+    init(searchApi: ItBookAPI.Search) {
+        self.searchApi = searchApi
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,58 +188,60 @@ extension SearchViewController {
         navigationItem.searchController = searchController
     }
     
-    func requestItBookStore(from title: String, by manager: ItBookStoreManager = ItBookStoreManager()) {
-        itBookStoreManager = manager
-        
-        itBookStoreManager?.requestItBookStore(bookName: title) { [weak self] response in
-            if case .success(let data) = response {
-                self?.itBookStore = data
-                self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
-                self?.totalPage = Int(self?.itBookStore?.total ?? "0")
-                self?.currentPage = Int(self?.itBookStore?.page ?? "0")
+    func requestItBookStore(from title: String) {
+        let _ = searchApi.request(bookName: title) { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let itBookStore):
+                self.itBookStore = itBookStore
+                self.books.append(contentsOf: self.itBookStore?.books ?? [])
+                self.totalPage = Int(self.itBookStore?.total ?? "0")
+                self.currentPage = Int(self.itBookStore?.page ?? "0")
                 
                 DispatchQueue.main.async {
-                    self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
-                    self?.totalLabel.text = "TotalPage : \(self?.totalPage ?? 0)"
-                    self?.pageLabel.text = "Page : \(self?.currentPage ?? 0)"
-                    self?.collectionView.reloadData()
-                    self?.isPaging = false
+                    self.errorLabel.text = "Error : \(self.itBookStore?.error ?? "")"
+                    self.totalLabel.text = "TotalPage : \(self.totalPage ?? 0)"
+                    self.pageLabel.text = "Page : \(self.currentPage ?? 0)"
+                    self.collectionView.reloadData()
+                    self.isPaging = false
                 }
-                
-            } else if case .failure(let error) = response {
-                print(error)
+            case .failure(let error):
+                // TODO: Error 노출 시 Alert 노출
+                print(error.localizedDescription)
             }
         }
     }
     
-    func requestItBookStorePagination(from title: String, at page: Int, by manager: ItBookStoreManager = ItBookStoreManager()) {
-        itBookStoreManager = manager
-        
-        itBookStoreManager?.requestItBookStore(bookName: title, page: page) { [weak self] response in
-            if case .success(let data) = response {
-                self?.itBookStore = data
-                self?.books.append(contentsOf: self?.itBookStore?.books ?? [])
-                self?.totalPage = Int(self?.itBookStore?.total ?? "0")
-                self?.currentPage = Int(self?.itBookStore?.page ?? "0")
+    func requestItBookStorePagination(from title: String, at page: Int) {
+        let _ = searchApi.request(bookName: title, page: page) { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let itBookStore):
+                self.itBookStore = itBookStore
+                self.books.append(contentsOf: self.itBookStore?.books ?? [])
+                self.totalPage = Int(self.itBookStore?.total ?? "0")
+                self.currentPage = Int(self.itBookStore?.page ?? "0")
                 
                 DispatchQueue.main.async {
-                    self?.errorLabel.text = "Error : \(self?.itBookStore?.error ?? "")"
-                    if let totalPage = self?.totalPage {
-                        if let currentPage = self?.currentPage {
+                    self.errorLabel.text = "Error : \(self.itBookStore?.error ?? "")"
+                    if let totalPage = self.totalPage {
+                        if let currentPage = self.currentPage {
                             if currentPage > totalPage {
-                                self?.totalLabel.text = "TotalPage : \(currentPage)"
+                                self.totalLabel.text = "TotalPage : \(currentPage)"
                             } else {
-                                self?.totalLabel.text = "TotalPage : \(totalPage)"
+                                self.totalLabel.text = "TotalPage : \(totalPage)"
                             }
-                            self?.pageLabel.text = "Page : \(currentPage)"
+                            self.pageLabel.text = "Page : \(currentPage)"
                         }
                     }
-                    self?.collectionView.reloadData()
-                    self?.isPaging = false
+                    self.collectionView.reloadData()
+                    self.isPaging = false
                 }
-                
-            } else if case .failure(let error) = response {
-                print(error)
+            case .failure(let error):
+                // TODO: Error 노출 시 Alert 노출
+                print(error.localizedDescription)
             }
         }
     }
