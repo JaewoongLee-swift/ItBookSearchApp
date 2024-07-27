@@ -9,8 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     let bookISBN13: String
-    var itBookDetailManager: ItBookDetailManager?
     var itBookDetail: ItBookDetail?
+    var booksApi: ItBookAPI.Books
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -175,8 +175,9 @@ class DetailViewController: UIViewController {
         return button
     }()
     
-    init(isbn13: String) {
+    init(isbn13: String, booksApi: ItBookAPI.Books = ItBookAPI.Books()) {
         self.bookISBN13 = isbn13
+        self.booksApi = booksApi
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -269,31 +270,32 @@ extension DetailViewController {
         secondPDFButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
     
-    func requestItBookDetail(from isbn13: String, by manager: ItBookDetailManager = ItBookDetailManager()) {
-        itBookDetailManager = manager
-        
-        itBookDetailManager?.requestItBookDetail(isbn13: isbn13) { [weak self] response in
-            guard let self = self else { return }
-            if case .success(let data) = response {
-                self.itBookDetail = data
-                guard let bookDetail = self.itBookDetail else { return }
-                
-                self.setDetailImage(urlString: bookDetail.getImageURL())
+    func requestItBookDetail(from isbn13: String) {
+        let _ = booksApi.request(isbn13: isbn13) { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let itBookDetail):
+                self.itBookDetail = itBookDetail
+                self.setDetailImage(urlString: itBookDetail.getImageURL())
                 
                 DispatchQueue.main.async {
-                    self.titleLabel.text = "Title: \(bookDetail.getTitle())"
-                    self.subtitleLabel.text = "Subtitle: \(bookDetail.getSubtitle())"
-                    self.authorLabel.text = "Author: \(bookDetail.getAuthors())"
-                    self.publisherLabel.text = "Publisher: \(bookDetail.getPublisher())"
-                    self.isbn10Label.text = "ISBN10: \(bookDetail.getISBN10())"
-                    self.isbn13Label.text = "ISBN13: \(bookDetail.getISBN13())"
-                    self.pageLabel.text = "Page: \(bookDetail.getPages())"
-                    self.yearLabel.text = "Year: \(bookDetail.getYear())"
-                    self.ratingLabel.text = "Rating: \(bookDetail.getRating())"
-                    self.descriptionLabel.text = "Description: \(bookDetail.getDescription())"
-                    self.priceLabel.text = "Price: $\(bookDetail.getPrice())"
-                    self.urlLabel.text = "URL: \(bookDetail.getURL())"
+                    self.titleLabel.text = "Title: \(itBookDetail.getTitle())"
+                    self.subtitleLabel.text = "Subtitle: \(itBookDetail.getSubtitle())"
+                    self.authorLabel.text = "Author: \(itBookDetail.getAuthors())"
+                    self.publisherLabel.text = "Publisher: \(itBookDetail.getPublisher())"
+                    self.isbn10Label.text = "ISBN10: \(itBookDetail.getISBN10())"
+                    self.isbn13Label.text = "ISBN13: \(itBookDetail.getISBN13())"
+                    self.pageLabel.text = "Page: \(itBookDetail.getPages())"
+                    self.yearLabel.text = "Year: \(itBookDetail.getYear())"
+                    self.ratingLabel.text = "Rating: \(itBookDetail.getRating())"
+                    self.descriptionLabel.text = "Description: \(itBookDetail.getDescription())"
+                    self.priceLabel.text = "Price: $\(itBookDetail.getPrice())"
+                    self.urlLabel.text = "URL: \(itBookDetail.getURL())"
                 }
+            case .failure(let error):
+                // TODO: Error 노출 시 Alert 노출
+                print(error.localizedDescription)
             }
         }
     }

@@ -24,7 +24,7 @@ final class ItBookAPI_BooksTests: XCTestCase {
     
     func test_request_with_statusCode_200_then_success() {
         // given
-        mockSession.urlResponse = urlResponse(statusCode: 200)
+        mockSession.urlResponse = .booksURLResponse(statusCode: 200)
         mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
         
         let expectation = expectation(description: "If status code is 200, ItBookAPI Books success response")
@@ -46,7 +46,7 @@ final class ItBookAPI_BooksTests: XCTestCase {
     func test_request_with_error_then_fail() {
         // given
         let givenError = ItBookStoreError.requestFailError
-        mockSession.urlResponse = urlResponse(statusCode: 200)
+        mockSession.urlResponse = .booksURLResponse(statusCode: 200)
         mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
         mockSession.error = givenError
         
@@ -69,7 +69,7 @@ final class ItBookAPI_BooksTests: XCTestCase {
     
     func test_request_with_statusCode_300_then_fail() {
         // given
-        mockSession.urlResponse = urlResponse(statusCode: 300)
+        mockSession.urlResponse = .booksURLResponse(statusCode: 300)
         mockSession.data = JsonLoader.data(fileName: "Securing_DevOps_ItBookDetail")
         
         let expectation = expectation(description: "If status code is 300, ItBookAPI Books fails to response")
@@ -91,7 +91,7 @@ final class ItBookAPI_BooksTests: XCTestCase {
     
     func test_request_with_statusCode_200_and_empty_data_then_fail() {
         // given
-        mockSession.urlResponse = urlResponse(statusCode: 200)
+        mockSession.urlResponse = .booksURLResponse(statusCode: 200)
         
         let expectation = expectation(description: "If status code is 200 with empty data, ItBookAPI Books fails to response")
         
@@ -112,7 +112,7 @@ final class ItBookAPI_BooksTests: XCTestCase {
     
     func test_request_with_statusCode_200_and_wrong_data_then_fail() {
         // given
-        mockSession.urlResponse = urlResponse(statusCode: 200)
+        mockSession.urlResponse = .booksURLResponse(statusCode: 200)
         mockSession.data = "Wrong Data".data(using: .utf8)
         
         let expectation = expectation(description: "If status code is 200 with wrong data, ItBookAPI Books fails to response")
@@ -130,18 +130,5 @@ final class ItBookAPI_BooksTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 3, handler: nil)
-    }
-}
-
-extension ItBookAPI_BooksTests {
-    private func urlResponse(statusCode: Int) -> HTTPURLResponse {
-        let url = URL(string: "https://api.itbook.store/1.0/books/")!
-        
-        return .init(
-            url: url,
-            statusCode: statusCode,
-            httpVersion: nil,
-            headerFields: nil
-        )!
     }
 }
