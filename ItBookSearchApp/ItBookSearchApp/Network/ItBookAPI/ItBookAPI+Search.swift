@@ -15,21 +15,29 @@ extension ItBookAPI {
         let requestInfo: RequestInfo<EmptyParameter> = .init(method: .get)
         let session: URLSessionProtocol
         
+        private let defaultPath: String
+        
         init(session: URLSessionProtocol = URLSession.shared) {
             let path = "/1.0/search"
             
             self.urlInfo = .ItBookAPI(path: path)
             self.session = session
+            self.defaultPath = path
         }
     }
 }
 
 extension ItBookAPI.Search {
     mutating func request(bookName: String, page: Int? = nil, completion: @escaping (Result<ItBookStore, Error>) -> Void) -> URLSessionDataTaskProtocol {
-        urlInfo.addPath("/" + bookName)
+        let bookPath = "/" + bookName
+        urlInfo.setPath(defaultPath + bookPath)
         
-        if let page {             urlInfo.addPath("/" + String(page)) }
+        if let page {
+            let pagePath = "/" + String(page)
+            urlInfo.setPath(defaultPath + bookPath + pagePath)
+        }
         let request = requestInfo.request(url: urlInfo.url)
+        print("### Request URL : \(urlInfo.url)")
         
         let dataTask = session.dataTask(with: request) { data, response, error in
             if let error { 

@@ -48,7 +48,7 @@ extension NetworkAPI.URLInfo {
         return url
     }
     
-    mutating func addPath(_ path: String) {
-        self.path += path
+    mutating func setPath(_ path: String) {
+        self.path = path
     }
 }
