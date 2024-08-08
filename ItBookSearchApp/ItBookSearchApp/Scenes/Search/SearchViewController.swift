@@ -6,23 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
+import RxCocoa
 
-class SearchViewController: UIViewController {
-    var itBookStore: ItBookStore?
-    var searchApi: ItBookAPI.Search
-    
-    var books : [ItBook] = []
-    
-    var searchedText = ""
-    var totalPage: Int?
-    var currentPage: Int?
-    var isPaging = false
-    
-    lazy var collectionView: UICollectionView = {
+class SearchViewController: UIViewController, View {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 215.0)
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
@@ -76,9 +68,12 @@ class SearchViewController: UIViewController {
         return stackView
     }()
     
-    init(searchApi: ItBookAPI.Search) {
-        self.searchApi = searchApi
+    var disposeBag = DisposeBag()
+    
+    init() {
         super.init(nibName: nil, bundle: nil)
+        
+        setNavigationItems()
     }
     
     required init?(coder: NSCoder) {
@@ -87,79 +82,64 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         
-        setNavigationItems()
+        view.backgroundColor = .systemBackground
         setupLayout()
     }
-}
-
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        let height = 215.0
-        
-        return CGSize(width: width, height: height)
-    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController(isbn13: books[indexPath.row].getISBN13())
+    func bind(reactor: SearchReactor) {
+        // Action
+        navigationItem.searchController?.searchBar.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .filter { !$0.isEmpty }
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .map { Reactor.Action.search(query: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-}
-
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        books.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.id, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+        collectionView.rx.prefetchItems
+            .compactMap(\.last?.row)
+            .withUnretained(self)
+            .map { _ in Reactor.Action.loadMore }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-            cell.configure(books[indexPath.row])
+        collectionView.rx.itemSelected
+            .map { Reactor.Action.selectItem(index: $0.row) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-        return cell
-    }
-}
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.searchTextField.text {
-            if text != "" {
-                books = []
-                collectionView.reloadData()
-                collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                requestItBookStore(from: text)
-                searchedText = text
+        // State
+        reactor.state.map { $0.books }
+            .bind(to: collectionView.rx.items(cellIdentifier: SearchCollectionViewCell.id, cellType: SearchCollectionViewCell.self)) { row, book, cell in
+                cell.configure(book)
             }
-        }
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { "TotalPage : \($0.totalPage)" }
+            .bind(to: totalLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { "CurrentPage : \($0.currentPage)" }
+            .bind(to: pageLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { "Error Message : \($0.error ?? "")" }
+            .bind(to: errorLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.selectedItem }
+            .asDriver(onErrorJustReturn: nil)
+            .filter { $0 != nil }
+            .drive(onNext: { [weak self] selectedItem in
+                guard let self else { return }
+                let detailViewController = DetailViewController(isbn13: selectedItem!.getISBN13())
+                self.navigationController?.pushViewController(detailViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
-}
-
-extension SearchViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            
-            let contentOffsetY = scrollView.contentOffset.y
-            let collectionViewContentSize = scrollView.contentSize.height
-            let height = scrollView.frame.height
-            
-            guard !isPaging else { return }
-        
-            if contentOffsetY > (collectionViewContentSize - height) {
-                isPaging = true
-                
-                guard let totalPage = totalPage else { return }
-                guard let currentPage = currentPage else { return }
-                
-                if totalPage > currentPage {
-                    self.currentPage? += 1
-                    requestItBookStorePagination(from: searchedText, at: self.currentPage ?? 0)
-                }
-            }
-            
-        }
-        
 }
 
 extension SearchViewController {
@@ -183,66 +163,7 @@ extension SearchViewController {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "도서명을 검색해주세요."
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
-    }
-    
-    func requestItBookStore(from title: String) {
-        let _ = searchApi.request(bookName: title) { [weak self] result in
-            guard let self else { return }
-            
-            switch result {
-            case .success(let itBookStore):
-                self.itBookStore = itBookStore
-                self.books.append(contentsOf: self.itBookStore?.books ?? [])
-                self.totalPage = Int(self.itBookStore?.total ?? "0")
-                self.currentPage = Int(self.itBookStore?.page ?? "0")
-                
-                DispatchQueue.main.async {
-                    self.errorLabel.text = "Error : \(self.itBookStore?.error ?? "")"
-                    self.totalLabel.text = "TotalPage : \(self.totalPage ?? 0)"
-                    self.pageLabel.text = "Page : \(self.currentPage ?? 0)"
-                    self.collectionView.reloadData()
-                    self.isPaging = false
-                }
-            case .failure(let error):
-                // TODO: Error 노출 시 Alert 노출
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func requestItBookStorePagination(from title: String, at page: Int) {
-        let _ = searchApi.request(bookName: title, page: page) { [weak self] result in
-            guard let self else { return }
-            
-            switch result {
-            case .success(let itBookStore):
-                self.itBookStore = itBookStore
-                self.books.append(contentsOf: self.itBookStore?.books ?? [])
-                self.totalPage = Int(self.itBookStore?.total ?? "0")
-                self.currentPage = Int(self.itBookStore?.page ?? "0")
-                
-                DispatchQueue.main.async {
-                    self.errorLabel.text = "Error : \(self.itBookStore?.error ?? "")"
-                    if let totalPage = self.totalPage {
-                        if let currentPage = self.currentPage {
-                            if currentPage > totalPage {
-                                self.totalLabel.text = "TotalPage : \(currentPage)"
-                            } else {
-                                self.totalLabel.text = "TotalPage : \(totalPage)"
-                            }
-                            self.pageLabel.text = "Page : \(currentPage)"
-                        }
-                    }
-                    self.collectionView.reloadData()
-                    self.isPaging = false
-                }
-            case .failure(let error):
-                // TODO: Error 노출 시 Alert 노출
-                print(error.localizedDescription)
-            }
-        }
     }
 }

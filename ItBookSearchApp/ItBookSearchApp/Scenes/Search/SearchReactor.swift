@@ -15,20 +15,22 @@ class SearchReactor: Reactor {
     }
     
     enum Mutation {
-           case setBooks([ItBook], Int, Int)
-           case appendBooks([ItBook], Int, Int)
-           case setError(String)
-           case setLoading(Bool)
-           case setSelectedItem(ItBook?)
-       }
+        case setQuery(String)
+        case setBooks([ItBook], Int, Int)
+        case appendBooks([ItBook], Int)
+        case setError(String)
+        case setLoading(Bool)
+        case setSelectedItem(ItBook?)
+    }
     
     struct State {
         var query: String = ""
         var books: [ItBook] = []
-        var totalPage: Int?
-        var currentPage: Int?
+        var totalPage: Int = 0
+        var currentPage: Int = 0
         var error: String?
         var isLoading: Bool = false
+        var pageEnd: Bool = false
         var selectedItem: ItBook?
     }
     
@@ -44,22 +46,54 @@ class SearchReactor: Reactor {
         switch action {
         case .search(let query):
             return Observable.concat([
+                Observable.just(.setQuery(query)),
                 Observable.just(.setLoading(true)),
                 searchBooks(query: query).map { .setBooks($0.0, $0.1, $0.2) },
                 Observable.just(.setLoading(false))
             ])
         case .loadMore:
-            guard let currentPage = currentState.currentPage,
-                  let totalPage = currentState.totalPage,
-                  currentPage < totalPage else {
+            guard currentState.currentPage < currentState.totalPage || currentState.pageEnd else {
                 return Observable.empty()
             }
             
-            return searchBooks(query: currentState.query, page: currentPage + 1).map { .appendBooks($0.0, $0.1, $0.2) }
+            return searchBooks(query: currentState.query, page: currentState.currentPage + 1).map { .appendBooks($0.0, $0.2) }
         case .selectItem(let index):
             let selectedItem = currentState.books[index]
             return Observable.just(.setSelectedItem(selectedItem))
-
+        }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        newState.selectedItem = nil
+        
+        switch mutation {
+        case .setQuery(let query):
+            newState.query = query
+        case .setBooks(let books, let totalPage, let currentPage):
+            newState.books = books
+            newState.totalPage = totalPage
+            newState.currentPage = currentPage
+        case .appendBooks(let books, let currentPage):
+            reduceAppendBooks(books: books, currentPage: currentPage, newState: &newState)
+        case .setError(let error):
+            newState.error = error
+        case .setLoading(let isLoading):
+            newState.isLoading = isLoading
+        case .setSelectedItem(let selectedItem):
+            newState.selectedItem = selectedItem
+        }
+        
+        return newState
+    }
+    
+    private func reduceAppendBooks(books: [ItBook], currentPage: Int, newState: inout State) {
+        if books.isEmpty || currentPage == newState.totalPage {
+            newState.pageEnd = true
+        } else {
+            newState.pageEnd = false
+            newState.books.append(contentsOf: books)
+            newState.currentPage = currentPage
         }
     }
     
@@ -72,6 +106,7 @@ class SearchReactor: Reactor {
                         let books = itBookStore.books
                         let totalPage = Int(itBookStore.total) ?? 0
                         let currentPage = Int(itBookStore.page) ?? 0
+                        
                         observer.onNext((books, totalPage, currentPage))
                         observer.onCompleted()
                     case .failure(let error):
@@ -87,6 +122,7 @@ class SearchReactor: Reactor {
                         let books = itBookStore.books
                         let totalPage = Int(itBookStore.total) ?? 0
                         let currentPage = Int(itBookStore.page) ?? 0
+
                         observer.onNext((books, totalPage, currentPage))
                         observer.onCompleted()
                     case .failure(let error):

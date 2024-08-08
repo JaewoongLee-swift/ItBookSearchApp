@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let rootViewController = SearchViewController(searchApi: ItBookAPI.Search())
+        let rootViewController = SearchViewController()
+        rootViewController.reactor = SearchReactor(searchApi: ItBookAPI.Search())
         let navigationController = UINavigationController(rootViewController: rootViewController)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
