@@ -98,10 +98,13 @@ class SearchViewController: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        collectionView.rx.prefetchItems
-            .compactMap(\.last?.row)
-            .withUnretained(self)
-            .map { _ in Reactor.Action.loadMore }
+        collectionView.rx.contentOffset
+            .map { [unowned self] contentOffset in
+                let collectionViewContentSize = self.collectionView.contentSize.height
+                let collectionViewHeight = self.collectionView.frame.height
+                
+                return Reactor.Action.loadMore(contentOffset.y > (collectionViewContentSize - collectionViewHeight))
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         

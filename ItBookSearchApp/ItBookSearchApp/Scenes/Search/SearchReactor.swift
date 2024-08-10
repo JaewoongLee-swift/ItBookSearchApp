@@ -10,7 +10,7 @@ import ReactorKit
 class SearchReactor: Reactor {
     enum Action {
         case search(query: String)
-        case loadMore
+        case loadMore(Bool)
         case selectItem(index: Int)
     }
     
@@ -51,12 +51,16 @@ class SearchReactor: Reactor {
                 searchBooks(query: query).map { .setBooks($0.0, $0.1, $0.2) },
                 Observable.just(.setLoading(false))
             ])
-        case .loadMore:
-            guard currentState.currentPage < currentState.totalPage || currentState.pageEnd else {
+        case .loadMore(let loadMore):
+            guard currentState.currentPage < currentState.totalPage && !currentState.pageEnd && loadMore else {
                 return Observable.empty()
             }
             
-            return searchBooks(query: currentState.query, page: currentState.currentPage + 1).map { .appendBooks($0.0, $0.2) }
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                searchBooks(query: currentState.query, page: currentState.currentPage + 1).map { .appendBooks($0.0, $0.2) },
+                Observable.just(.setLoading(false))
+            ])
         case .selectItem(let index):
             let selectedItem = currentState.books[index]
             return Observable.just(.setSelectedItem(selectedItem))
