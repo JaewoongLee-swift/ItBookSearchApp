@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let rootViewController = SearchViewController()
-        rootViewController.reactor = SearchReactor(searchApi: ItBookAPI.Search())
+        let searchReactor = SearchReactor(searchApi: ItBookAPI.Search(), imageFetcher: AppDelegate.imageFetcher)
+        rootViewController.reactor = searchReactor
         let navigationController = UINavigationController(rootViewController: rootViewController)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
@@ -50,7 +51,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 

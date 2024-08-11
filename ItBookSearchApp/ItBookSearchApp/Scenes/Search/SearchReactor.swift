@@ -12,6 +12,7 @@ class SearchReactor: Reactor {
         case search(query: String)
         case loadMore(Bool)
         case selectItem(index: Int)
+        case prefetchRows(rows: [Int])
     }
     
     enum Mutation {
@@ -37,9 +38,11 @@ class SearchReactor: Reactor {
     let initialState = State()
     
     private var searchApi: ItBookAPI.Search
+    private let imageFetcher: ImageFetcher
     
-    init(searchApi: ItBookAPI.Search) {
+    init(searchApi: ItBookAPI.Search, imageFetcher: ImageFetcher) {
         self.searchApi = searchApi
+        self.imageFetcher = imageFetcher
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -64,6 +67,12 @@ class SearchReactor: Reactor {
         case .selectItem(let index):
             let selectedItem = currentState.books[index]
             return Observable.just(.setSelectedItem(selectedItem))
+        case .prefetchRows(let rows):
+            for row in rows {
+                _ = imageFetcher.fetchImage(from: currentState.books[row].getImageURL()) { _ in }
+            }
+            
+            return .empty()
         }
     }
     

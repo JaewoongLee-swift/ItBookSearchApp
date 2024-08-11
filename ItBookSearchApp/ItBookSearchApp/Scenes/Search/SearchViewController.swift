@@ -98,6 +98,11 @@ class SearchViewController: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        collectionView.rx.prefetchItems
+            .map { Reactor.Action.prefetchRows(rows: $0.map { $0.row }) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         collectionView.rx.contentOffset
             .map { [unowned self] contentOffset in
                 let collectionViewContentSize = self.collectionView.contentSize.height
