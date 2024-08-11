@@ -55,7 +55,10 @@ class SearchReactor: Reactor {
                 Observable.just(.setLoading(false))
             ])
         case .loadMore(let loadMore):
-            guard currentState.currentPage < currentState.totalPage && !currentState.pageEnd && loadMore else {
+            guard currentState.currentPage < currentState.totalPage
+                    && !currentState.pageEnd
+                    && loadMore 
+                    && !currentState.isLoading else {
                 return Observable.empty()
             }
             
