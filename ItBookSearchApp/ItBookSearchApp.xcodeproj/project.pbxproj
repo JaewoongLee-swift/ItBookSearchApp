@@ -35,6 +35,9 @@
 		066E4CFD2C5CC392006D9802 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 066E4CFC2C5CC392006D9802 /* RxCocoa */; };
 		066E4CFF2C5CC392006D9802 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 066E4CFE2C5CC392006D9802 /* RxRelay */; };
 		066E4D022C5CC574006D9802 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 066E4D012C5CC574006D9802 /* RxSwift */; };
+		06779F992C6A292D008213E1 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 06779F982C6A292D008213E1 /* RxTest */; };
+		06779F9B2C6A2931008213E1 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 06779F9A2C6A2931008213E1 /* RxBlocking */; };
+		06779F9D2C6B76E9008213E1 /* SearchReactor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06779F9C2C6B76E9008213E1 /* SearchReactor+Extension.swift */; };
 		55745F8E291972AF00414462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8D291972AF00414462 /* AppDelegate.swift */; };
 		55745F90291972AF00414462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55745F8F291972AF00414462 /* SceneDelegate.swift */; };
 		55745F97291972B000414462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55745F96291972B000414462 /* Assets.xcassets */; };
@@ -103,6 +106,7 @@
 		066E4CCF2C51102E006D9802 /* ItBookAPI+BooksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItBookAPI+BooksTests.swift"; sourceTree = "<group>"; };
 		066E4CD12C5516C2006D9802 /* HTTPURLResponse+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+.swift"; sourceTree = "<group>"; };
 		066E4CF72C5CBB44006D9802 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
+		06779F9C2C6B76E9008213E1 /* SearchReactor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchReactor+Extension.swift"; sourceTree = "<group>"; };
 		55745F8A291972AF00414462 /* ItBookSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55745F8D291972AF00414462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55745F8F291972AF00414462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06779F992C6A292D008213E1 /* RxTest in Frameworks */,
+				06779F9B2C6A2931008213E1 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +298,7 @@
 			children = (
 				55746011291E848D00414462 /* SearchViewControllerTests.swift */,
 				55746019291EDBBE00414462 /* DetailViewControllerTests.swift */,
+				06779F9C2C6B76E9008213E1 /* SearchReactor+Extension.swift */,
 				062079482C2C321C000CB436 /* Utility */,
 				062079432C2AF1ED000CB436 /* Mock */,
 				0620793A2C26A788000CB436 /* ImageFetcherTests */,
@@ -442,6 +449,10 @@
 				55745FA2291972B000414462 /* PBXTargetDependency */,
 			);
 			name = ItBookSearchAppTests;
+			packageProductDependencies = (
+				06779F982C6A292D008213E1 /* RxTest */,
+				06779F9A2C6A2931008213E1 /* RxBlocking */,
+			);
 			productName = ItBookSearchAppTests;
 			productReference = 55745FA0291972B000414462 /* ItBookSearchAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -589,6 +600,7 @@
 				066E4CD02C51102E006D9802 /* ItBookAPI+BooksTests.swift in Sources */,
 				062079392C26A6BE000CB436 /* ImageFetcherTests.swift in Sources */,
 				066E4CCD2C4E997D006D9802 /* ItBookAPI+SearchTests.swift in Sources */,
+				06779F9D2C6B76E9008213E1 /* SearchReactor+Extension.swift in Sources */,
 				5574601A291EDBBE00414462 /* DetailViewControllerTests.swift in Sources */,
 				0620793E2C2ADF25000CB436 /* MockURLSessionDataTask.swift in Sources */,
 				062079472C2B91FB000CB436 /* TestImageLoader.swift in Sources */,
@@ -964,6 +976,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 066E4CF92C5CC392006D9802 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		06779F982C6A292D008213E1 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 066E4CF92C5CC392006D9802 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		06779F9A2C6A2931008213E1 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 066E4CF92C5CC392006D9802 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
