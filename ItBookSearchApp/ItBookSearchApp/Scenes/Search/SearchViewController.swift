@@ -22,6 +22,8 @@ class SearchViewController: UIViewController, View {
         return collectionView
     }()
     
+    var detailViewController: DetailViewController?
+    
     lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.text = "Error : 0"
@@ -104,7 +106,9 @@ class SearchViewController: UIViewController, View {
             .disposed(by: disposeBag)
         
         collectionView.rx.contentOffset
-            .map { [unowned self] contentOffset in
+            .map { [weak self] contentOffset in
+                guard let self else { return .loadMore(false) }
+                
                 let collectionViewContentSize = self.collectionView.contentSize.height
                 let collectionViewHeight = self.collectionView.frame.height
                 
@@ -143,8 +147,14 @@ class SearchViewController: UIViewController, View {
             .filter { $0 != nil }
             .drive(onNext: { [weak self] selectedItem in
                 guard let self else { return }
-                let detailViewController = DetailViewController(isbn13: selectedItem!.getISBN13())
-                self.navigationController?.pushViewController(detailViewController, animated: true)
+                
+                if let detailViewController {
+                    self.navigationController?.pushViewController(detailViewController, animated: true)
+                } else {
+                    let detailViewController = DetailViewController(isbn13: selectedItem!.getISBN13())
+                    self.detailViewController = detailViewController
+                    self.navigationController?.pushViewController(detailViewController, animated: true)
+                }
             })
             .disposed(by: disposeBag)
     }
